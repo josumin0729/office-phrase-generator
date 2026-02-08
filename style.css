@@ -1,20 +1,22 @@
-
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   🎨 CSS Variables (색상 시스템)
+   🎨 CSS Variables
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 :root {
-    /* 메인 컬러 */
-    --color-workplace: #2E7D32;      /* 현실 직장인 - 진한 초록 */
-    --color-workplace-light: #4CAF50; /* 밝은 초록 */
-    --color-maknae: #E91E63;          /* 귀여운 막내 - 핑크 */
-    --color-maknae-light: #F48FB1;    /* 밝은 핑크 */
+    /* 파스텔 컬러 */
+    --color-pink: #FF6B9D;
+    --color-yellow: #FFE66D;
+    --color-mint: #B5EAD7;
+    --color-orange: #FFB347;
+    --color-pastel-pink: #FFB6C1;
+    --color-cream: #FFFEF0;
+    --color-light-pink: #FFF5F7;
+    --color-light-mint: #F5F3E8;
     
-    /* 그레이스케일 */
+    /* 기본 컬러 */
     --color-bg: #FAFAFA;
-    --color-surface: #FFFFFF;
-    --color-border: #E0E0E0;
-    --color-text-primary: #212121;
-    --color-text-secondary: #757575;
+    --color-text: #2D2D2D;
+    --color-border: #2D2D2D;
+    --color-gray: #999999;
     
     /* 간격 */
     --spacing-xs: 8px;
@@ -25,15 +27,10 @@
     --spacing-2xl: 48px;
     
     /* 둥글기 */
-    --radius-sm: 8px;
     --radius-md: 12px;
-    --radius-lg: 16px;
+    --radius-lg: 20px;
     --radius-xl: 24px;
-    
-    /* 그림자 */
-    --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
-    --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+    --radius-round: 100px;
     
     /* 폰트 */
     --font-main: 'Noto Sans KR', sans-serif;
@@ -52,10 +49,9 @@
 body {
     font-family: var(--font-main);
     background: var(--color-bg);
-    color: var(--color-text-primary);
+    color: var(--color-text);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -65,130 +61,65 @@ body {
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   🎪 Hero Section (서비스 소개)
+   🎪 Hero Section
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: var(--color-pink);
     padding: var(--spacing-2xl) var(--spacing-lg);
     text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    opacity: 0.3;
-    z-index: 0;
-}
-
-.hero > * {
-    position: relative;
-    z-index: 1;
-}
-
-.hero-badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(10px);
-    padding: var(--spacing-xs) var(--spacing-md);
-    border-radius: 100px;
-    font-size: 12px;
-    font-weight: 500;
-    margin-bottom: var(--spacing-md);
-    border: 1px solid rgba(255,255,255,0.3);
 }
 
 .hero-title {
     font-size: 32px;
     font-weight: 900;
-    margin-bottom: var(--spacing-sm);
-    letter-spacing: -0.5px;
+    margin-bottom: var(--spacing-md);
+    letter-spacing: 2px;
+}
+
+.title-char {
+    display: inline-block;
+    -webkit-text-stroke: 2px var(--color-text);
+    color: transparent;
+    animation: pop 0.5s ease-out backwards;
+}
+
+.title-char.pink { -webkit-text-stroke-color: #FFFFFF; }
+.title-char.yellow { -webkit-text-stroke-color: var(--color-yellow); }
+.title-char.mint { -webkit-text-stroke-color: var(--color-mint); }
+.title-char.orange { -webkit-text-stroke-color: var(--color-orange); }
+
+@keyframes pop {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .hero-subtitle {
     font-size: 16px;
-    margin-bottom: var(--spacing-xl);
-    opacity: 0.95;
+    color: #FFFFFF;
     line-height: 1.8;
+    font-weight: 500;
 }
 
-.highlight-green {
-    background: var(--color-workplace-light);
-    padding: 2px 8px;
-    border-radius: 4px;
+.highlight-mint {
+    background: var(--color-mint);
+    color: var(--color-text);
+    padding: 2px 10px;
+    border-radius: 6px;
     font-weight: 700;
 }
 
 .highlight-pink {
-    background: var(--color-maknae);
-    padding: 2px 8px;
-    border-radius: 4px;
+    background: var(--color-pastel-pink);
+    color: var(--color-text);
+    padding: 2px 10px;
+    border-radius: 6px;
     font-weight: 700;
-}
-
-.hero-stats {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-xl);
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 28px;
-    font-weight: 900;
-    line-height: 1;
-    margin-bottom: var(--spacing-xs);
-}
-
-.stat-label {
-    font-size: 13px;
-    opacity: 0.8;
-}
-
-.stat-divider {
-    width: 1px;
-    height: 40px;
-    background: rgba(255,255,255,0.3);
-}
-
-.scroll-indicator {
-    margin-top: var(--spacing-lg);
-    animation: bounce 2s infinite;
-}
-
-.scroll-indicator span {
-    font-size: 24px;
-    display: block;
-}
-
-.scroll-indicator p {
-    font-size: 12px;
-    margin-top: var(--spacing-xs);
-    opacity: 0.8;
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-10px);
-    }
-    60% {
-        transform: translateY(-5px);
-    }
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -205,14 +136,12 @@ body {
     font-weight: 700;
     text-align: center;
     margin-bottom: var(--spacing-xl);
-    color: var(--color-text-primary);
 }
 
 .button-grid {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
 }
 
 .phrase-btn {
@@ -220,50 +149,32 @@ body {
     align-items: center;
     gap: var(--spacing-md);
     padding: var(--spacing-lg);
-    border: none;
+    border: 3px solid var(--color-border);
     border-radius: var(--radius-lg);
     font-family: var(--font-main);
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: var(--shadow-md);
-    position: relative;
-    overflow: hidden;
+    transition: transform 0.2s;
     min-height: 88px;
 }
 
-.phrase-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255,255,255,0.1);
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.phrase-btn:hover::before {
-    opacity: 1;
+.phrase-btn:hover {
+    transform: rotate(-1deg);
 }
 
 .phrase-btn:active {
-    transform: scale(0.98);
+    transform: rotate(0deg) scale(0.98);
 }
 
 .btn-workplace {
-    background: linear-gradient(135deg, var(--color-workplace) 0%, var(--color-workplace-light) 100%);
-    color: white;
+    background: var(--color-mint);
 }
 
 .btn-workplace .btn-title {
-    font-family: var(--font-main);
     font-weight: 900;
 }
 
 .btn-maknae {
-    background: linear-gradient(135deg, var(--color-maknae) 0%, var(--color-maknae-light) 100%);
-    color: white;
+    background: var(--color-pastel-pink);
 }
 
 .btn-maknae .btn-title {
@@ -285,38 +196,17 @@ body {
 .btn-title {
     font-size: 20px;
     margin-bottom: 4px;
-    display: block;
+    color: var(--color-text);
 }
 
 .btn-desc {
     font-size: 13px;
-    opacity: 0.9;
-    font-weight: 400;
-}
-
-.btn-arrow {
-    font-size: 24px;
-    font-weight: 700;
+    color: var(--color-text);
     opacity: 0.7;
-    transition: transform 0.3s;
-}
-
-.phrase-btn:hover .btn-arrow {
-    transform: translateX(4px);
-}
-
-.button-helper {
-    text-align: center;
-    font-size: 14px;
-    color: var(--color-text-secondary);
-    padding: var(--spacing-md);
-    background: var(--color-surface);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   💌 Card Section (문구 카드)
+   💌 Card Section
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .card-section {
     padding: var(--spacing-xl) var(--spacing-lg);
@@ -338,162 +228,110 @@ body {
 
 .card-wrapper {
     margin-bottom: var(--spacing-lg);
+    display: flex;
+    justify-content: center;
 }
 
 .phrase-card {
-    background: var(--color-surface);
-    border-radius: var(--radius-xl);
-    padding: var(--spacing-xl);
-    box-shadow: var(--shadow-lg);
-    border: 2px solid var(--color-border);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.phrase-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
-}
-
-.card-header {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1 / 1;
+    padding: 60px 40px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-bottom: var(--spacing-lg);
-    padding-bottom: var(--spacing-md);
-    border-bottom: 2px dashed var(--color-border);
+    text-align: center;
+    position: relative;
+    border-radius: var(--radius-lg);
 }
 
-.card-badge {
-    font-size: 12px;
-    font-weight: 700;
-    padding: 6px 12px;
-    border-radius: 100px;
-    background: var(--color-bg);
-    color: var(--color-text-primary);
+/* 직장인 카드 */
+.phrase-card.type-workplace {
+    background: var(--color-light-mint);
+    border: 4px dashed var(--color-mint);
 }
 
-.card-badge.type-workplace {
-    background: var(--color-workplace);
-    color: white;
-}
-
-.card-badge.type-maknae {
-    background: var(--color-maknae);
-    color: white;
-}
-
-.card-emoji {
-    font-size: 32px;
-}
-
-.card-body {
-    margin-bottom: var(--spacing-lg);
-}
-
-.card-text {
-    font-size: 20px;
-    line-height: 1.7;
-    color: var(--color-text-primary);
-    word-break: keep-all;
-    min-height: 60px;
-}
-
-.card-text.style-workplace {
+.phrase-card.type-workplace .card-text {
     font-family: var(--font-main);
-    font-weight: 700;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 1.8;
+    letter-spacing: -1px;
+    color: var(--color-text);
+    word-break: keep-all;
+    margin-bottom: auto;
 }
 
-.card-text.style-maknae {
+/* 막내 카드 */
+.phrase-card.type-maknae {
+    background: var(--color-light-pink);
+    border: 4px dashed var(--color-pastel-pink);
+}
+
+.phrase-card.type-maknae .card-text {
     font-family: var(--font-cute);
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.8;
+    color: var(--color-text);
+    word-break: keep-all;
+    margin-bottom: auto;
+}
+
+.card-credit {
+    margin-top: auto;
+    font-size: 12px;
+    color: var(--color-gray);
     font-weight: 400;
-    font-size: 22px;
-}
-
-.card-footer {
-    padding-top: var(--spacing-md);
-    border-top: 1px solid var(--color-border);
-}
-
-.card-category {
-    font-size: 13px;
-    color: var(--color-text-secondary);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   🎬 Action Bar (액션 버튼)
+   🎬 Action Bar
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .action-bar {
     display: flex;
     gap: var(--spacing-sm);
-    flex-wrap: wrap;
     margin-bottom: var(--spacing-lg);
 }
 
 .action-btn {
     flex: 1;
-    min-width: 110px;
-    padding: var(--spacing-md) var(--spacing-sm);
-    border: 2px solid var(--color-border);
+    padding: var(--spacing-md);
+    border: 3px dashed var(--color-border);
     border-radius: var(--radius-md);
-    background: var(--color-surface);
+    background: var(--color-cream);
     font-family: var(--font-main);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
     min-height: 48px;
 }
 
 .action-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
+    background: var(--color-yellow);
+    transform: rotate(-1deg);
 }
 
 .action-btn:active {
-    transform: translateY(0);
-}
-
-.btn-icon-small {
-    font-size: 18px;
-}
-
-.btn-refresh {
-    border-color: #2196F3;
-    color: #2196F3;
-}
-
-.btn-refresh:hover {
-    background: #2196F3;
-    color: white;
-}
-
-.btn-download {
-    border-color: #4CAF50;
-    color: #4CAF50;
-}
-
-.btn-download:hover {
-    background: #4CAF50;
-    color: white;
+    transform: rotate(0deg);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   📤 Share Section (공유 버튼)
+   📤 Share Section
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .share-section {
     padding: var(--spacing-lg);
-    background: var(--color-bg);
+    background: var(--color-cream);
     border-radius: var(--radius-lg);
+    border: 3px dashed #E0E0E0;
 }
 
 .share-title {
     font-size: 14px;
     font-weight: 600;
-    color: var(--color-text-secondary);
+    color: var(--color-text);
     margin-bottom: var(--spacing-md);
     text-align: center;
 }
@@ -508,9 +346,9 @@ body {
     flex: 1;
     max-width: 120px;
     padding: var(--spacing-md) var(--spacing-sm);
-    border: 2px solid var(--color-border);
+    border: 3px solid var(--color-border);
     border-radius: var(--radius-md);
-    background: var(--color-surface);
+    background: white;
     font-family: var(--font-main);
     cursor: pointer;
     transition: all 0.2s;
@@ -522,17 +360,11 @@ body {
 }
 
 .share-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
-}
-
-.share-btn:active {
-    transform: translateY(0);
+    transform: rotate(-2deg);
 }
 
 .share-icon {
     font-size: 24px;
-    line-height: 1;
 }
 
 .share-text {
@@ -540,36 +372,16 @@ body {
     font-weight: 600;
 }
 
-/* 카카오톡 버튼 */
 .btn-kakao {
-    border-color: #FEE500;
-    color: #3C1E1E;
-}
-
-.btn-kakao:hover {
     background: #FEE500;
 }
 
-/* X (트위터) 버튼 */
 .btn-x {
-    border-color: #000000;
-    color: #000000;
+    background: #E8E8E8;
 }
 
-.btn-x:hover {
-    background: #000000;
-    color: white;
-}
-
-/* 더보기 버튼 */
 .btn-share {
-    border-color: #9E9E9E;
-    color: #616161;
-}
-
-.btn-share:hover {
-    background: #9E9E9E;
-    color: white;
+    background: #C3B1E1;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -584,41 +396,27 @@ body {
 .feedback-toggle {
     width: 100%;
     padding: var(--spacing-md);
-    background: var(--color-surface);
-    border: 2px dashed var(--color-border);
+    background: white;
+    border: 3px dashed var(--color-border);
     border-radius: var(--radius-md);
     font-family: var(--font-main);
     font-size: 15px;
     font-weight: 600;
-    color: var(--color-text-secondary);
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .feedback-toggle:hover {
-    background: var(--color-bg);
-    border-color: var(--color-text-secondary);
-    color: var(--color-text-primary);
+    background: var(--color-yellow);
+    transform: rotate(-1deg);
 }
 
 .feedback-form {
     margin-top: var(--spacing-md);
     padding: var(--spacing-lg);
-    background: var(--color-surface);
+    background: white;
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-    animation: slideDown 0.3s ease-out;
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    border: 3px solid var(--color-border);
 }
 
 .feedback-title {
@@ -631,17 +429,11 @@ body {
     width: 100%;
     min-height: 100px;
     padding: var(--spacing-md);
-    border: 2px solid var(--color-border);
+    border: 2px solid #E0E0E0;
     border-radius: var(--radius-md);
     font-family: var(--font-main);
     font-size: 14px;
     resize: vertical;
-    transition: border-color 0.2s;
-}
-
-#feedbackText:focus {
-    outline: none;
-    border-color: #667eea;
 }
 
 .feedback-actions {
@@ -654,32 +446,20 @@ body {
 .btn-cancel {
     flex: 1;
     padding: var(--spacing-md);
-    border: none;
+    border: 3px solid var(--color-border);
     border-radius: var(--radius-md);
     font-family: var(--font-main);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
-    min-height: 48px;
 }
 
 .btn-submit {
-    background: #667eea;
-    color: white;
-}
-
-.btn-submit:hover {
-    background: #5568d3;
+    background: var(--color-mint);
 }
 
 .btn-cancel {
-    background: var(--color-bg);
-    color: var(--color-text-secondary);
-}
-
-.btn-cancel:hover {
-    background: var(--color-border);
+    background: var(--color-pastel-pink);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -688,12 +468,17 @@ body {
 .footer-info {
     text-align: center;
     padding: var(--spacing-xl) var(--spacing-lg);
-    color: var(--color-text-secondary);
     font-size: 13px;
+    color: var(--color-gray);
 }
 
 .footer-info p {
     margin: var(--spacing-xs) 0;
+}
+
+.footer-ai {
+    font-size: 11px;
+    opacity: 0.8;
 }
 
 .footer-copyright {
@@ -701,59 +486,19 @@ body {
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   📱 반응형 (모바일 최적화)
+   📱 반응형
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media (max-width: 480px) {
-    :root {
-        --spacing-lg: 20px;
-        --spacing-xl: 28px;
-        --spacing-2xl: 40px;
-    }
-    
     .hero-title {
-        font-size: 28px;
-    }
-    
-    .hero-subtitle {
-        font-size: 15px;
-    }
-    
-    .stat-number {
         font-size: 24px;
     }
     
-    .section-title {
-        font-size: 18px;
+    .phrase-card.type-workplace .card-text {
+        font-size: 26px;
     }
     
-    .phrase-btn {
-        min-height: 80px;
-        padding: var(--spacing-md);
-    }
-    
-    .btn-icon {
-        font-size: 36px;
-    }
-    
-    .btn-title {
-        font-size: 18px;
-    }
-    
-    .card-text {
-        font-size: 18px;
-    }
-    
-    .card-text.style-maknae {
-        font-size: 20px;
-    }
-    
-    .action-bar {
-        flex-direction: column;
-    }
-    
-    .action-btn {
-        width: 100%;
-        min-width: auto;
+    .phrase-card.type-maknae .card-text {
+        font-size: 28px;
     }
     
     .share-buttons {
@@ -763,22 +508,10 @@ body {
     .share-btn {
         min-height: 60px;
     }
-    
-    .share-icon {
-        font-size: 20px;
-    }
-    
-    .share-text {
-        font-size: 11px;
-    }
 }
 
 @media (min-width: 768px) {
     .button-grid {
         flex-direction: row;
-    }
-    
-    .phrase-btn {
-        flex: 1;
     }
 }
