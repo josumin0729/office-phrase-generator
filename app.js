@@ -1,4 +1,3 @@
-
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // GA4 이벤트 트래킹
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -71,23 +70,15 @@ function showCard(type) {
     
     // 카드 내용 업데이트
     const cardText = document.getElementById('cardText');
-    const cardEmoji = document.getElementById('cardEmoji');
-    const cardBadge = document.getElementById('cardBadge');
-    const cardCategory = document.getElementById('cardCategory');
+    const phraseCard = document.getElementById('phraseCard');
     
     cardText.textContent = currentPhrase.text;
-    cardEmoji.textContent = currentPhrase.emoji;
-    cardCategory.textContent = currentPhrase.category;
     
     // 스타일 적용
     if (type === 'workplace') {
-        cardBadge.textContent = '현실 직장인';
-        cardBadge.className = 'card-badge type-workplace';
-        cardText.className = 'card-text style-workplace';
+        phraseCard.className = 'phrase-card type-workplace';
     } else {
-        cardBadge.textContent = '귀여운 막내';
-        cardBadge.className = 'card-badge type-maknae';
-        cardText.className = 'card-text style-maknae';
+        phraseCard.className = 'phrase-card type-maknae';
     }
     
     // 카드 섹션 표시
@@ -331,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 카카오 SDK 초기화
     initKakao();
     
-    // 버튼 클릭
+    // 메인 버튼 클릭
     document.getElementById('btnWorkplace').addEventListener('click', () => {
         showCard('workplace');
         trackEvent('button_clicked', { button_type: 'workplace' });
