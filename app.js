@@ -343,18 +343,3 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('feedbackText').value = '';
     });
 });
-```
-
----
-
-## ✅ 최종 체크리스트:
-```
-□ index.html - Google Fonts (Dongle 추가)
-□ index.html - 카드에 이모티콘 요소 추가
-□ style.css - 전체 교체
-□ app.js - 전체 교체
-
-□ GitHub Push
-□ 5분 대기
-□ Ctrl+Shift+R
-□ 테스트!
