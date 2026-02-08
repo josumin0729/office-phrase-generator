@@ -346,20 +346,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ---
 
-## ✅ 복구 순서:
-```
-1. GitHub에서 app.js 파일 열기
-
-2. Edit (연필 아이콘) 클릭
-
-3. 전체 선택 (Ctrl+A) → 삭제
-
-4. 위 코드 전체 복붙
-
-5. Commit changes
-
-6. 5분 대기
-
-7. Ctrl + Shift + R (강력 새로고침)
-
-8. 테스트!
