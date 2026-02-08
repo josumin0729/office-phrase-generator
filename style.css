@@ -2,7 +2,6 @@
    🎨 CSS Variables
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 :root {
-    /* 파스텔 컬러 */
     --color-pink: #FF6B9D;
     --color-yellow: #FFE66D;
     --color-mint: #B5EAD7;
@@ -11,28 +10,20 @@
     --color-cream: #FFFEF0;
     --color-light-pink: #FFF5F7;
     --color-light-mint: #F5F3E8;
-    
-    /* 기본 컬러 */
     --color-bg: #FAFAFA;
     --color-text: #2D2D2D;
     --color-border: #2D2D2D;
     --color-gray: #999999;
-    
-    /* 간격 */
     --spacing-xs: 8px;
     --spacing-sm: 12px;
     --spacing-md: 16px;
     --spacing-lg: 24px;
     --spacing-xl: 32px;
     --spacing-2xl: 48px;
-    
-    /* 둥글기 */
     --radius-md: 12px;
     --radius-lg: 20px;
     --radius-xl: 24px;
     --radius-round: 100px;
-    
-    /* 폰트 */
     --font-main: 'Noto Sans KR', sans-serif;
     --font-cute: 'Gaegu', cursive;
 }
@@ -249,41 +240,49 @@ body {
 /* 직장인 카드 */
 .phrase-card.type-workplace {
     background: var(--color-light-mint);
-    border: 4px dashed var(--color-mint);
+    border: 2px dashed var(--color-mint);
 }
 
 .phrase-card.type-workplace .card-text {
     font-family: var(--font-main);
     font-weight: 900;
-    font-size: 32px;
-    line-height: 1.8;
+    font-size: 40px;
+    line-height: 1.6;
     letter-spacing: -1px;
     color: var(--color-text);
     word-break: keep-all;
-    margin-bottom: auto;
+    margin: auto;
+    text-align: center;
+    width: 100%;
 }
 
 /* 막내 카드 */
 .phrase-card.type-maknae {
     background: var(--color-light-pink);
-    border: 4px dashed var(--color-pastel-pink);
+    border: 2px dashed var(--color-pastel-pink);
 }
 
 .phrase-card.type-maknae .card-text {
     font-family: var(--font-cute);
     font-weight: 700;
-    font-size: 36px;
-    line-height: 1.8;
+    font-size: 44px;
+    line-height: 1.6;
     color: var(--color-text);
     word-break: keep-all;
-    margin-bottom: auto;
+    margin: auto;
+    text-align: center;
+    width: 100%;
 }
 
 .card-credit {
-    margin-top: auto;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 12px;
     color: var(--color-gray);
     font-weight: 400;
+    white-space: nowrap;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -494,11 +493,11 @@ body {
     }
     
     .phrase-card.type-workplace .card-text {
-        font-size: 26px;
+        font-size: 32px;
     }
     
     .phrase-card.type-maknae .card-text {
-        font-size: 28px;
+        font-size: 36px;
     }
     
     .share-buttons {
