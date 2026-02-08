@@ -1,497 +1,229 @@
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   🎨 CSS Variables
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 :root {
-    --color-pink: #FF6B9D;
-    --color-yellow: #FFE66D;
-    --color-mint: #B5EAD7;
-    --color-orange: #FFB347;
-    --color-pastel-pink: #FFB6C1;
-    --color-cream: #FFFEF0;
-    --color-light-pink: #FFF5F7;
-    --color-light-mint: #F5F3E8;
-    --color-bg: #FAFAFA;
-    --color-text: #2D2D2D;
-    --color-border: #2D2D2D;
-    --color-gray: #999999;
-    --spacing-xs: 8px;
-    --spacing-sm: 12px;
-    --spacing-md: 16px;
-    --spacing-lg: 24px;
-    --spacing-xl: 32px;
-    --spacing-2xl: 48px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-    --radius-xl: 24px;
-    --radius-round: 100px;
-    --font-main: 'Noto Sans KR', sans-serif;
-    --font-cute: 'Dongle', sans-serif;
+  --mint: #9FE3D0;
+  --pink: #FFB6C8;
+  --bg-main: #FFFEFA;
+  --text-main: #222;
+  --text-sub: #666;
+  --border-soft: #E6E6E6;
+
+  --radius-lg: 20px;
+  --radius-md: 14px;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   🎯 Reset & Base
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Base */
 body {
-    font-family: var(--font-main);
-    background: var(--color-bg);
-    color: var(--color-text);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  margin: 0;
 }
 
 .container {
-    max-width: 100%;
-    min-height: 100vh;
-    padding-bottom: var(--spacing-2xl);
+  min-height: 100vh;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   🎪 Hero Section
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ───────── HERO ───────── */
+
 .hero {
-    background: var(--color-pink);
-    padding: var(--spacing-2xl) var(--spacing-lg);
-    text-align: center;
+  padding: 48px 20px 36px;
+  text-align: center;
+  background: var(--bg-main);
 }
 
 .hero-title {
-    font-size: 32px;
-    font-weight: 900;
-    margin-bottom: var(--spacing-md);
-    color: white;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 8px;
 }
 
 .hero-subtitle {
-    font-size: 16px;
-    color: #FFFFFF;
-    line-height: 1.8;
-    font-weight: 500;
+  font-size: 15px;
+  color: var(--text-sub);
 }
 
-.highlight-mint {
-    background: var(--color-mint);
-    color: var(--color-text);
-    padding: 2px 10px;
-    border-radius: 6px;
-    font-weight: 700;
+/* 구분 라인 */
+.hero::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  margin: 26px auto 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--mint), var(--pink));
 }
 
-.highlight-pink {
-    background: var(--color-pastel-pink);
-    color: var(--color-text);
-    padding: 2px 10px;
-    border-radius: 6px;
-    font-weight: 700;
-}
+/* ───────── BUTTON SECTION ───────── */
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   🎯 Button Section
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .button-section {
-    padding: var(--spacing-xl) var(--spacing-lg);
-    max-width: 600px;
-    margin: 0 auto;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 36px 20px;
 }
 
 .section-title {
-    font-size: 20px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: var(--spacing-xl);
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
 }
 
 .button-grid {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .phrase-btn {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    padding: var(--spacing-lg);
-    border: 3px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    font-family: var(--font-main);
-    cursor: pointer;
-    transition: opacity 0.2s;
-    min-height: 88px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  background: white;
+  border: 2px solid var(--border-soft);
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
 }
 
 .phrase-btn:hover {
-    opacity: 0.8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,.05);
 }
 
-.phrase-btn:active {
-    opacity: 0.6;
-}
+/* 컬러는 보더로만 */
 
 .btn-workplace {
-    background: var(--color-mint);
-}
-
-.btn-workplace .btn-title {
-    font-weight: 900;
+  border-color: var(--mint);
 }
 
 .btn-maknae {
-    background: var(--color-pastel-pink);
-}
-
-.btn-maknae .btn-title {
-    font-family: var(--font-cute);
-    font-weight: 700;
-}
-
-.btn-icon {
-    font-size: 40px;
-    line-height: 1;
-    flex-shrink: 0;
-}
-
-.btn-content {
-    flex: 1;
-    text-align: left;
+  border-color: var(--pink);
 }
 
 .btn-title {
-    font-size: 20px;
-    margin-bottom: 4px;
-    color: var(--color-text);
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .btn-desc {
-    font-size: 13px;
-    color: var(--color-text);
-    opacity: 0.7;
+  font-size: 13px;
+  color: var(--text-sub);
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   💌 Card Section
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ───────── CARD ───────── */
+
 .card-section {
-    padding: var(--spacing-xl) var(--spacing-lg);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.card-wrapper {
-    margin-bottom: var(--spacing-lg);
-    display: flex;
-    justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 32px 20px;
 }
 
 .phrase-card {
-    width: 100%;
-    max-width: 500px;
-    aspect-ratio: 1 / 1;
-    padding: 60px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    border-radius: var(--radius-lg);
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-lg);
+  background: white;
+  border: 2px solid var(--border-soft);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
 }
 
-/* 직장인 카드 */
-.phrase-card.type-workplace {
-    background: var(--color-light-mint);
-    border: 2px dashed var(--color-mint);
+/* 카드별 포인트만 변경 */
+
+.type-workplace {
+  border-color: var(--mint);
 }
 
-.phrase-card.type-workplace .card-text {
-    font-family: var(--font-main);
-    font-weight: 900;
-    font-size: 64px;
-    line-height: 1.4;
-    letter-spacing: -2px;
-    color: var(--color-text);
-    word-break: keep-all;
-    margin: auto 0;
-    text-align: center;
-    width: 100%;
+.type-maknae {
+  border-color: var(--pink);
 }
 
-.phrase-card.type-workplace .card-emoticon {
-    font-family: var(--font-main);
-    font-size: 48px;
-    margin: 20px 0 0 0;
-    color: var(--color-text);
+.card-text {
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.35;
+  word-break: keep-all;
 }
 
-/* 막내 카드 */
-.phrase-card.type-maknae {
-    background: var(--color-light-pink);
-    border: 2px dashed var(--color-pastel-pink);
+/* 막내만 폰트 변경 */
+
+.type-maknae .card-text {
+  font-family: 'Dongle', sans-serif;
+  font-size: 56px;
 }
 
-.phrase-card.type-maknae .card-text {
-    font-family: var(--font-cute);
-    font-weight: 700;
-    font-size: 64px;
-    line-height: 1.3;
-    color: var(--color-text);
-    word-break: keep-all;
-    margin: auto 0;
-    text-align: center;
-    width: 100%;
-}
+/* 감정 이모지 제거 완료 */
 
-.phrase-card.type-maknae .card-emoticon {
-    font-family: var(--font-main);
-    font-size: 48px;
-    margin: 20px 0 0 0;
-    color: var(--color-text);
-}
+/* ───────── ACTION BAR ───────── */
 
-.card-credit {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 12px;
-    color: var(--color-gray);
-    font-weight: 400;
-    white-space: nowrap;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   🎬 Action Bar
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .action-bar {
-    display: flex;
-    gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-lg);
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
 .action-btn {
-    flex: 1;
-    padding: var(--spacing-md);
-    border: 3px dashed var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-cream);
-    font-family: var(--font-main);
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: opacity 0.2s;
-    min-height: 48px;
+  flex: 1;
+  background: white;
+  border: 2px solid var(--border-soft);
+  padding: 14px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
 }
 
-.action-btn:hover {
-    opacity: 0.7;
-}
+/* ───────── SHARE ───────── */
 
-.action-btn:active {
-    opacity: 0.5;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   📤 Share Section
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .share-section {
-    padding: var(--spacing-lg);
-    background: var(--color-cream);
-    border-radius: var(--radius-lg);
-    border: 3px dashed #E0E0E0;
-}
-
-.share-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: var(--spacing-md);
-    text-align: center;
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  border: 2px solid var(--border-soft);
 }
 
 .share-buttons {
-    display: flex;
-    gap: var(--spacing-sm);
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
 }
 
 .share-btn {
-    flex: 1;
-    max-width: 120px;
-    padding: var(--spacing-md) var(--spacing-sm);
-    border: 3px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: white;
-    font-family: var(--font-main);
-    cursor: pointer;
-    transition: opacity 0.2s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    min-height: 70px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border-soft);
+  background: white;
 }
 
-.share-btn:hover {
-    opacity: 0.7;
-}
+/* ───────── FEEDBACK ───────── */
 
-.share-icon {
-    font-size: 24px;
-}
-
-.share-text {
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.btn-kakao {
-    background: #FEE500;
-}
-
-.btn-x {
-    background: #E8E8E8;
-}
-
-.btn-share {
-    background: #C3B1E1;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   📝 Feedback Section
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .feedback-section {
-    max-width: 600px;
-    margin: var(--spacing-2xl) auto 0;
-    padding: 0 var(--spacing-lg);
+  max-width: 600px;
+  margin: 48px auto 0;
+  padding: 0 20px;
 }
 
-.feedback-toggle {
-    width: 100%;
-    padding: var(--spacing-md);
-    background: white;
-    border: 3px dashed var(--color-border);
-    border-radius: var(--radius-md);
-    font-family: var(--font-main);
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: opacity 0.2s;
-}
-
-.feedback-toggle:hover {
-    opacity: 0.7;
-}
-
+.feedback-toggle,
 .feedback-form {
-    margin-top: var(--spacing-md);
-    padding: var(--spacing-lg);
-    background: white;
-    border-radius: var(--radius-lg);
-    border: 3px solid var(--color-border);
+  background: white;
+  border: 2px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 16px;
 }
 
-.feedback-title {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: var(--spacing-md);
-}
+/* ───────── FOOTER ───────── */
 
-#feedbackText {
-    width: 100%;
-    min-height: 100px;
-    padding: var(--spacing-md);
-    border: 2px solid #E0E0E0;
-    border-radius: var(--radius-md);
-    font-family: var(--font-main);
-    font-size: 14px;
-    resize: vertical;
-}
-
-.feedback-actions {
-    display: flex;
-    gap: var(--spacing-sm);
-    margin-top: var(--spacing-md);
-}
-
-.btn-submit,
-.btn-cancel {
-    flex: 1;
-    padding: var(--spacing-md);
-    border: 3px solid var(--color-border);
-    border-radius: var(--radius-md);
-    font-family: var(--font-main);
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.btn-submit {
-    background: var(--color-mint);
-}
-
-.btn-cancel {
-    background: var(--color-pastel-pink);
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   🦶 Footer
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .footer-info {
-    text-align: center;
-    padding: var(--spacing-xl) var(--spacing-lg);
-    font-size: 13px;
-    color: var(--color-gray);
+  text-align: center;
+  padding: 32px 20px;
+  color: #999;
+  font-size: 13px;
 }
 
-.footer-info p {
-    margin: var(--spacing-xs) 0;
-}
-
-.footer-ai {
-    font-size: 11px;
-    opacity: 0.8;
-}
-
-.footer-copyright {
-    opacity: 0.6;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   📱 반응형
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 24px;
-    }
-    
-    .phrase-card.type-workplace .card-text {
-        font-size: 48px;
-    }
-    
-    .phrase-card.type-maknae .card-text {
-        font-size: 48px;
-    }
-    
-    .card-emoticon {
-        font-size: 36px !important;
-    }
-    
-    .share-buttons {
-        gap: var(--spacing-xs);
-    }
-    
-    .share-btn {
-        min-height: 60px;
-    }
-}
+/* ───────── RESPONSIVE ───────── */
 
 @media (min-width: 768px) {
-    .button-grid {
-        flex-direction: row;
-    }
+  .button-grid {
+    flex-direction: row;
+  }
 }
