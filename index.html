@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>직장인 문구 생성기 📊</title>
+    <title>직장인 문구 생성기 📊 | 현실 공감 vs 귀여운 막내</title>
+    <meta name="description" content="900개 직장인 찐 공감 문구! 회사에서 몰래 보는 현실 푸념부터 귀여운 막내 애교까지">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Gaegu:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
     
     <!-- Google Analytics 4 -->
@@ -12,92 +19,163 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX'); // 실제 GA4 ID로 변경
+        gtag('config', 'G-XXXXXXXXXX');
     </script>
-</head>
-<body>
-    <div class="excel-container">
-        <!-- 헤더 (엑셀 리본 느낌) -->
-        <header class="excel-header">
-            <div class="excel-tabs">
-                <div class="tab active">📊 문구생성기.xlsx</div>
-            </div>
-            <div class="excel-toolbar">
-                <span class="toolbar-item">파일</span>
-                <span class="toolbar-item">편집</span>
-                <span class="toolbar-item">보기</span>
-            </div>
-        </header>
-
-        <!-- 메인 콘텐츠 -->
-        <main class="excel-content">
-            <!-- 행/열 헤더 -->
-            <div class="row-header">
-                <div class="cell-label">1</div>
-                <div class="cell-label">2</div>
-                <div class="cell-label">3</div>
-            </div>
-            <div class="col-header">
-                <div class="cell-label">A</div>
-                <div class="cell-label">B</div>
-                <div class="cell-label">C</div>
-            </div>
-
-            <!-- 버튼 영역 -->
-            <div class="button-container">
-                <button class="btn-workplace" id="btnWorkplace">
-                    😩 현실 직장인 공감
-                </button>
-                <button class="btn-maknae" id="btnMaknae">
-                    💕 귀여운 막내
-                </button>
-            </div>
-
-            <!-- 카드 출력 영역 -->
-            <div class="card-container" id="cardContainer" style="display: none;">
-                <div class="excel-card" id="excelCard">
-                    <div class="card-cell">
-                        <div class="cell-header">A1</div>
-                        <div class="cell-content" id="cardContent">
-                            <!-- 문구가 여기 표시됨 -->
-                        </div>
-                    </div>
-                    <div class="card-emoji" id="cardEmoji">😊</div>
-                </div>
-
-                <!-- 액션 버튼 -->
-                <div class="action-buttons">
-                    <button class="btn-download" id="btnDownload">
-                        💾 이미지 저장
-                    </button>
-                    <button class="btn-share" id="btnShare">
-                        💬 공유하기
-                    </button>
-                    <button class="btn-refresh" id="btnRefresh">
-                        🔄 다시 뽑기
-                    </button>
-                </div>
-            </div>
-        </main>
-
-        <!-- 피드백 영역 -->
-        <footer class="feedback-section">
-            <div class="feedback-toggle" id="feedbackToggle">
-                📝 피드백 남기기
-            </div>
-            <div class="feedback-form" id="feedbackForm" style="display: none;">
-                <textarea 
-                    id="feedbackText" 
-                    placeholder="건의사항이나 추가했으면 하는 문구를 남겨주세요!"
-                    maxlength="500"
-                ></textarea>
-                <button class="btn-submit" id="btnSubmit">전송</button>
-            </div>
-        </footer>
-    </div>
-
+    
+    <!-- Meta Pixel Code -->
+    <!-- 여기에 Meta 픽셀 코드 추가 예정 -->
+    
+    <!-- Kakao SDK -->
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"
+            integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4" 
+            crossorigin="anonymous"></script>
+    
     <!-- html2canvas CDN -->
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 히어로 섹션 -->
+        <section class="hero">
+            <div class="hero-badge">📊 Beta v1.0</div>
+            <h1 class="hero-title">
+                직장인 문구 생성기
+            </h1>
+            <p class="hero-subtitle">
+                오늘도 출근한 당신을 위한<br>
+                <span class="highlight-green">현실 공감</span> vs <span class="highlight-pink">귀여운 막내</span>
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">400+</div>
+                    <div class="stat-label">문구</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">스타일</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-number">무료</div>
+                    <div class="stat-label">사용</div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>↓</span>
+                <p>버튼을 눌러보세요</p>
+            </div>
+        </section>
+
+        <!-- 버튼 영역 -->
+        <section class="button-section">
+            <h2 class="section-title">어떤 문구를 뽑아볼까요?</h2>
+            
+            <div class="button-grid">
+                <!-- 현실 직장인 버튼 -->
+                <button class="phrase-btn btn-workplace" id="btnWorkplace">
+                    <div class="btn-icon">😭</div>
+                    <div class="btn-content">
+                        <div class="btn-title">현실 직장인</div>
+                        <div class="btn-desc">찐 공감 푸념 모음</div>
+                    </div>
+                    <div class="btn-arrow">→</div>
+                </button>
+
+                <!-- 귀여운 막내 버튼 -->
+                <button class="phrase-btn btn-maknae" id="btnMaknae">
+                    <div class="btn-icon">💕</div>
+                    <div class="btn-content">
+                        <div class="btn-title">귀여운 막내</div>
+                        <div class="btn-desc">애교 가득 문구</div>
+                    </div>
+                    <div class="btn-arrow">→</div>
+                </button>
+            </div>
+
+            <div class="button-helper">
+                💡 클릭하면 랜덤 문구가 나와요!
+            </div>
+        </section>
+
+        <!-- 카드 출력 영역 -->
+        <section class="card-section" id="cardSection" style="display: none;">
+            <div class="card-wrapper">
+                <div class="phrase-card" id="phraseCard">
+                    <div class="card-header">
+                        <span class="card-badge" id="cardBadge">현실 직장인</span>
+                        <span class="card-emoji" id="cardEmoji">😭</span>
+                    </div>
+                    
+                    <div class="card-body">
+                        <p class="card-text" id="cardText">
+                            문구가 여기 표시됩니다
+                        </p>
+                    </div>
+                    
+                    <div class="card-footer">
+                        <div class="card-category" id="cardCategory">카테고리</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 액션 버튼 -->
+            <div class="action-bar">
+                <button class="action-btn btn-refresh" id="btnRefresh">
+                    <span class="btn-icon-small">🔄</span>
+                    다시 뽑기
+                </button>
+                <button class="action-btn btn-download" id="btnDownload">
+                    <span class="btn-icon-small">💾</span>
+                    이미지 저장
+                </button>
+            </div>
+
+            <!-- 공유 버튼 섹션 -->
+            <div class="share-section">
+                <div class="share-title">공유하기</div>
+                <div class="share-buttons">
+                    <button class="share-btn btn-kakao" id="btnKakao">
+                        <span class="share-icon">💬</span>
+                        <span class="share-text">카톡</span>
+                    </button>
+                    <button class="share-btn btn-x" id="btnX">
+                        <span class="share-icon">𝕏</span>
+                        <span class="share-text">X</span>
+                    </button>
+                    <button class="share-btn btn-share" id="btnShare">
+                        <span class="share-icon">📤</span>
+                        <span class="share-text">더보기</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 피드백 영역 -->
+        <footer class="feedback-section">
+            <button class="feedback-toggle" id="feedbackToggle">
+                📝 피드백 남기기
+            </button>
+            <div class="feedback-form" id="feedbackForm" style="display: none;">
+                <h3 class="feedback-title">의견을 들려주세요!</h3>
+                <textarea 
+                    id="feedbackText" 
+                    placeholder="추가했으면 하는 문구나 개선사항을 자유롭게 남겨주세요 😊"
+                    maxlength="500"
+                ></textarea>
+                <div class="feedback-actions">
+                    <button class="btn-submit" id="btnSubmit">전송하기</button>
+                    <button class="btn-cancel" id="btnCancel">취소</button>
+                </div>
+            </div>
+        </footer>
+
+        <!-- 하단 정보 -->
+        <div class="footer-info">
+            <p>Made with 💚 for 직장인</p>
+            <p class="footer-copyright">© 2024 직장인 문구 생성기</p>
+        </div>
+    </div>
 </body>
 </html>
