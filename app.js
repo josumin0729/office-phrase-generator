@@ -54,37 +54,38 @@ function getRandomPhrase(data) {
     };
 }
 
-// 카드 표시
 function showCard(type) {
     currentType = type;
     const data = type === 'workplace' ? workplaceData : maknaeData;
     currentPhrase = getRandomPhrase(data);
-    
+
     const cardText = document.getElementById('cardText');
     const cardEmoticon = document.getElementById('cardEmoticon');
     const phraseCard = document.getElementById('phraseCard');
-    
+
     cardText.textContent = currentPhrase.text;
-    
+
+    // ❗ 기존 클래스 유지하면서 타입만 토글
+    phraseCard.classList.remove('type-workplace', 'type-maknae');
+    phraseCard.classList.add(type === 'workplace' ? 'type-workplace' : 'type-maknae');
+
     if (type === 'workplace') {
-        phraseCard.className = 'phrase-card type-workplace';
         const randomEmoticon = workplaceEmoticons[Math.floor(Math.random() * workplaceEmoticons.length)];
         cardEmoticon.textContent = randomEmoticon;
     } else {
-        phraseCard.className = 'phrase-card type-maknae';
         cardEmoticon.textContent = maknaeEmoticon;
     }
-    
+
     const cardSection = document.getElementById('cardSection');
     cardSection.style.display = 'block';
-    
+
     setTimeout(() => {
         cardSection.scrollIntoView({ 
             behavior: 'smooth', 
             block: 'center' 
         });
     }, 100);
-    
+
     trackEvent('phrase_generated', {
         phrase_type: type,
         category: currentPhrase.category
