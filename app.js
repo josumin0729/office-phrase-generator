@@ -19,6 +19,10 @@ let currentPhrase = null;
 let workplaceData = null;
 let maknaeData = null;
 
+// 이모티콘 배열
+const workplaceEmoticons = ['ㅠㅠ', '(╥﹏╥)'];
+const maknaeEmoticon = '૮ ˶ᵔ ᵕ ᵔ˶ ა';
+
 // JSON 데이터 로드
 async function loadData() {
     try {
@@ -57,14 +61,18 @@ function showCard(type) {
     currentPhrase = getRandomPhrase(data);
     
     const cardText = document.getElementById('cardText');
+    const cardEmoticon = document.getElementById('cardEmoticon');
     const phraseCard = document.getElementById('phraseCard');
     
     cardText.textContent = currentPhrase.text;
     
     if (type === 'workplace') {
         phraseCard.className = 'phrase-card type-workplace';
+        const randomEmoticon = workplaceEmoticons[Math.floor(Math.random() * workplaceEmoticons.length)];
+        cardEmoticon.textContent = randomEmoticon;
     } else {
         phraseCard.className = 'phrase-card type-maknae';
+        cardEmoticon.textContent = maknaeEmoticon;
     }
     
     const cardSection = document.getElementById('cardSection');
@@ -258,22 +266,14 @@ function showToast(message) {
     const toast = document.createElement('div');
     toast.className = 'toast';
     toast.textContent = message;
-    toast.style.cssText = 'position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 12px 24px; border-radius: 100px; font-size: 14px; font-weight: 600; z-index: 9999; animation: toastIn 0.3s ease-out;';
+    toast.style.cssText = 'position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 12px 24px; border-radius: 100px; font-size: 14px; font-weight: 600; z-index: 9999;';
     
     document.body.appendChild(toast);
     
     setTimeout(() => {
-        toast.style.animation = 'toastOut 0.3s ease-out';
-        setTimeout(() => {
-            toast.remove();
-        }, 300);
+        toast.remove();
     }, 2000);
 }
-
-
-const style = document.createElement('style');
-style.textContent = '@keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } } @keyframes toastOut { from { opacity: 1; } to { opacity: 0; } }';
-document.head.appendChild(style);
 
 // 피드백 전송
 function submitFeedback() {
@@ -343,4 +343,3 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('feedbackText').value = '';
     });
 });
-
