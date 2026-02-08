@@ -173,27 +173,73 @@ function shareKakao() {
 }
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// X (구 트위터) 공유하기
+// X (구 트위터) 공유하기 - 카드 이미지 포함!
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-function shareX() {
+async function shareX() {
     if (!currentPhrase) {
         alert('먼저 문구를 뽑아주세요!');
         return;
     }
     
-    const text = `${currentPhrase.text}\n\n직장인 문구 생성기에서 뽑았어요 ㅋㅋ`;
-    const url = window.location.href;
-    const xUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-    
-    window.open(xUrl, '_blank', 'width=550,height=420');
-    
-    trackEvent('shared', { 
-        method: 'x', 
-        phrase_type: currentType 
-    });
-    
-    showToast('𝕏 X로 공유했어요!');
+    try {
+        // 1. 카드를 이미지로 변환
+        const card = document.getElementById('phraseCard');
+        const canvas = await html2canvas(card, {
+            backgroundColor: '#ffffff',
+            scale: 2,
+            logging: false
+        });
+        
+        // 2. 이미지를 blob으로 변환
+        const blob = await new Promise(resolve => {
+            canvas.toBlob(resolve, 'image/png');
+        });
+        
+        // 3. 파일 객체 생성
+        const file = new File([blob], '직장인문구.png', { type: 'image/png' });
+        
+        // 4. Web Share API 사용 (이미지 포함)
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            await navigator.share({
+                text: `${currentPhrase.text}\n\n직장인 문구 생성기에서 뽑았어요 ㅋㅋ\n${window.location.href}`,
+                files: [file]
+            });
+            
+            trackEvent('shared', { 
+                method: 'x_with_image', 
+                phrase_type: currentType 
+            });
+            
+            showToast('𝕏 이미지와 함께 공유했어요!');
+        } else {
+            // Web Share API 지원 안 되면 기존 방식 (텍스트만)
+            const text = `${currentPhrase.text}\n\n직장인 문구 생성기에서 뽑았어요 ㅋㅋ`;
+            const url = window.location.href;
+            const xUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+            
+            window.open(xUrl, '_blank', 'width=550,height=420');
+            
+            trackEvent('shared', { 
+                method: 'x_text_only', 
+                phrase_type: currentType 
+            });
+            
+            showToast('𝕏 X로 공유했어요! (이미지는 수동 첨부 필요)');
+        }
+    } catch (error) {
+        console.error('X 공유 실패:', error);
+        
+        // 실패 시 텍스트만 공유
+        const text = `${currentPhrase.text}\n\n직장인 문구 생성기에서 뽑았어요 ㅋㅋ`;
+        const url = window.location.href;
+        const xUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+        
+        window.open(xUrl, '_blank', 'width=550,height=420');
+        showToast('𝕏 텍스트만 공유되었습니다');
+    }
 }
+```
+
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 기본 공유하기 (Web Share API)
