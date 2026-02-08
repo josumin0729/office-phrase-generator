@@ -343,7 +343,4 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('feedbackText').value = '';
     });
 });
-```
-
----
 
