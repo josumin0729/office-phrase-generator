@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>직장인 문구 생성기 📊</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX'); // 실제 GA4 ID로 변경
+    </script>
+</head>
+<body>
+    <div class="excel-container">
+        <!-- 헤더 (엑셀 리본 느낌) -->
+        <header class="excel-header">
+            <div class="excel-tabs">
+                <div class="tab active">📊 문구생성기.xlsx</div>
+            </div>
+            <div class="excel-toolbar">
+                <span class="toolbar-item">파일</span>
+                <span class="toolbar-item">편집</span>
+                <span class="toolbar-item">보기</span>
+            </div>
+        </header>
+
+        <!-- 메인 콘텐츠 -->
+        <main class="excel-content">
+            <!-- 행/열 헤더 -->
+            <div class="row-header">
+                <div class="cell-label">1</div>
+                <div class="cell-label">2</div>
+                <div class="cell-label">3</div>
+            </div>
+            <div class="col-header">
+                <div class="cell-label">A</div>
+                <div class="cell-label">B</div>
+                <div class="cell-label">C</div>
+            </div>
+
+            <!-- 버튼 영역 -->
+            <div class="button-container">
+                <button class="btn-workplace" id="btnWorkplace">
+                    😩 현실 직장인 공감
+                </button>
+                <button class="btn-maknae" id="btnMaknae">
+                    💕 귀여운 막내
+                </button>
+            </div>
+
+            <!-- 카드 출력 영역 -->
+            <div class="card-container" id="cardContainer" style="display: none;">
+                <div class="excel-card" id="excelCard">
+                    <div class="card-cell">
+                        <div class="cell-header">A1</div>
+                        <div class="cell-content" id="cardContent">
+                            <!-- 문구가 여기 표시됨 -->
+                        </div>
+                    </div>
+                    <div class="card-emoji" id="cardEmoji">😊</div>
+                </div>
+
+                <!-- 액션 버튼 -->
+                <div class="action-buttons">
+                    <button class="btn-download" id="btnDownload">
+                        💾 이미지 저장
+                    </button>
+                    <button class="btn-share" id="btnShare">
+                        💬 공유하기
+                    </button>
+                    <button class="btn-refresh" id="btnRefresh">
+                        🔄 다시 뽑기
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- 피드백 영역 -->
+        <footer class="feedback-section">
+            <div class="feedback-toggle" id="feedbackToggle">
+                📝 피드백 남기기
+            </div>
+            <div class="feedback-form" id="feedbackForm" style="display: none;">
+                <textarea 
+                    id="feedbackText" 
+                    placeholder="건의사항이나 추가했으면 하는 문구를 남겨주세요!"
+                    maxlength="500"
+                ></textarea>
+                <button class="btn-submit" id="btnSubmit">전송</button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- html2canvas CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
