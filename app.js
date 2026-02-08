@@ -270,6 +270,7 @@ function showToast(message) {
     }, 2000);
 }
 
+
 const style = document.createElement('style');
 style.textContent = '@keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } } @keyframes toastOut { from { opacity: 1; } to { opacity: 0; } }';
 document.head.appendChild(style);
