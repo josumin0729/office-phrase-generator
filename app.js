@@ -190,8 +190,8 @@ function submitFeedback() {
         return;
     }
     
-    const formUrl = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
-    const entryId = 'entry.123456789';
+    const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdtndkAyHAOxu8W3596eG4YEr4GFajUZuvhyv2q_2FsJ-OBRg/formResponse';
+    const entryId = 'entry.1285085085';
     
     const formData = new FormData();
     formData.append(entryId, feedback);
