@@ -74,7 +74,7 @@ function showCard(type) {
         });
     }, 100);
     
-    // ✅ GA4 이벤트: 문구 생성 (카테고리별)
+    // GA4 이벤트: 카테고리별 문구 생성
     const eventName = type === 'workplace' 
         ? 'phrase_generated_office' 
         : 'phrase_generated_maknae';
@@ -102,7 +102,7 @@ async function downloadImage() {
         link.href = canvas.toDataURL('image/png');
         link.click();
         
-        // ✅ GA4 이벤트: 이미지 다운로드 (카테고리별)
+        // GA4 이벤트: 카테고리별 이미지 다운로드
         const eventName = currentType === 'workplace'
             ? 'image_downloaded_office'
             : 'image_downloaded_maknae';
@@ -133,7 +133,7 @@ async function shareContent() {
         url: window.location.href
     };
     
-    // ✅ GA4 이벤트: 공유 (카테고리별)
+    // GA4 이벤트: 카테고리별 공유
     const eventName = currentType === 'workplace'
         ? 'shared_office'
         : 'shared_maknae';
