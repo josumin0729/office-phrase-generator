@@ -1,35 +1,54 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>직장인 문구 생성기 📊 | 현실 공감 vs 귀여운 막내</title>
     <meta name="description" content="400개 직장인 찐 공감 문구! 회사에서 몰래 보는 현실 푸념부터 귀여운 막내 애교까지">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="style.css">
-    
+
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXC777H7F5"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-PXC777H7F5');
     </script>
-    
+
     <!-- Meta Pixel Code -->
-    <!-- 여기에 Meta 픽셀 코드 추가 예정 -->
-    
-    
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1684985552465399');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=1684985552465399&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
+
+
     <!-- html2canvas CDN -->
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="app.js"></script>
 </head>
+
 <body>
     <div class="container">
         <!-- 히어로 섹션 -->
@@ -44,7 +63,7 @@
         <!-- 버튼 영역 -->
         <section class="button-section">
             <h2 class="section-title">어떤 문구를 뽑아볼까요?</h2>
-            
+
             <div class="button-grid">
                 <!-- 현실 직장인 버튼 -->
                 <button class="phrase-btn btn-workplace" id="btnWorkplace">
@@ -101,11 +120,7 @@
             </button>
             <div class="feedback-form" id="feedbackForm" style="display: none;">
                 <h3 class="feedback-title">의견을 들려주세요!</h3>
-                <textarea 
-                    id="feedbackText" 
-                    placeholder="추가했으면 하는 문구나 개선사항을 자유롭게 남겨주세요 😊"
-                    maxlength="500"
-                ></textarea>
+                <textarea id="feedbackText" placeholder="추가했으면 하는 문구나 개선사항을 자유롭게 남겨주세요 😊" maxlength="500"></textarea>
                 <div class="feedback-actions">
                     <button class="btn-submit" id="btnSubmit">전송하기</button>
                     <button class="btn-cancel" id="btnCancel">취소</button>
@@ -116,10 +131,11 @@
         <!-- 하단 정보 -->
         <div class="footer-info">
             <p>Made with 💚 for 직장인</p>
-             <p class="footer-copyright">© 2026 직장인 문구 생성기</p>
+            <p class="footer-copyright">© 2026 직장인 문구 생성기</p>
             <p class="footer-ai">이 콘텐츠는 Claude로 제작되었습니다</p>
-           
+
         </div>
     </div>
 </body>
+
 </html>
