@@ -160,10 +160,5 @@ MIT License - 자유롭게 사용 및 수정 가능합니다.
 [🔗 Live Demo](https://josumin0729.github.io/office-phrase-generator/) | [📝 Feedback](https://docs.google.com/forms/d/e/1FAIpQLSdtndkAyHAOxu8W3596eG4YEr4GFajUZuvhyv2q_2FsJ-OBRg/viewform)
 
 </div>
-```
 
----
-
-
----
 
