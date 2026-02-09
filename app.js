@@ -5,7 +5,6 @@ function trackEvent(eventName, eventParams = {}) {
     }
 }
 
-
 // 전역 변수
 let currentType = null;
 let currentPhrase = null;
@@ -32,7 +31,6 @@ async function loadData() {
 
 // 랜덤 문구 가져오기 (완전 공평한 랜덤!)
 function getRandomPhrase(data) {
-    // 모든 문구를 하나의 배열로 합치기
     const allPhrases = [];
     
     data.sections.forEach(section => {
@@ -45,7 +43,6 @@ function getRandomPhrase(data) {
         });
     });
     
-    // 전체에서 완전 랜덤 선택
     const randomIndex = Math.floor(Math.random() * allPhrases.length);
     return allPhrases[randomIndex];
 }
@@ -198,7 +195,6 @@ function submitFeedback() {
 // 이벤트 리스너
 document.addEventListener('DOMContentLoaded', () => {
     loadData();
-    initKakao();
     
     document.getElementById('btnWorkplace').addEventListener('click', () => {
         showCard('workplace');
