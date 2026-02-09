@@ -74,9 +74,12 @@ function showCard(type) {
         });
     }, 100);
     
+    // ✅ A/B 테스트: 문구 생성 추적 (카테고리별)
     trackEvent('phrase_generated', {
         phrase_type: type,
-        category: currentPhrase.category
+        category: currentPhrase.category,
+        event_category: 'engagement',
+        event_label: type === 'workplace' ? 'generate_office' : 'generate_youngest'
     });
 }
 
@@ -96,8 +99,11 @@ async function downloadImage() {
         link.href = canvas.toDataURL('image/png');
         link.click();
         
+        // ✅ A/B 테스트: 다운로드 추적 (카테고리별)
         trackEvent('image_downloaded', { 
-            phrase_type: currentType 
+            phrase_type: currentType,
+            event_category: 'conversion',
+            event_label: currentType === 'workplace' ? 'save_office' : 'save_youngest'
         });
         
         showToast('이미지가 저장되었습니다!');
@@ -124,17 +130,25 @@ async function shareContent() {
     try {
         if (navigator.share) {
             await navigator.share(shareData);
+            
+            // ✅ A/B 테스트: 공유 추적 (카테고리별 + 방법)
             trackEvent('shared', { 
                 method: 'native', 
-                phrase_type: currentType 
+                phrase_type: currentType,
+                event_category: 'share',
+                event_label: currentType === 'workplace' ? 'share_office' : 'share_youngest'
             });
             showToast('공유했습니다!');
         } else {
             const copyText = text + '\n\n' + window.location.href;
             await navigator.clipboard.writeText(copyText);
+            
+            // ✅ A/B 테스트: 링크 복사 추적 (카테고리별)
             trackEvent('shared', { 
                 method: 'clipboard', 
-                phrase_type: currentType 
+                phrase_type: currentType,
+                event_category: 'share',
+                event_label: currentType === 'workplace' ? 'share_office' : 'share_youngest'
             });
             showToast('링크가 복사되었습니다!');
         }
@@ -198,17 +212,37 @@ document.addEventListener('DOMContentLoaded', () => {
     
     document.getElementById('btnWorkplace').addEventListener('click', () => {
         showCard('workplace');
-        trackEvent('button_clicked', { button_type: 'workplace' });
+        
+        // ✅ A/B 테스트: 직장인 버튼 클릭 추적
+        trackEvent('button_clicked', { 
+            button_type: 'workplace',
+            event_category: 'interaction',
+            event_label: 'click_office_button'
+        });
     });
     
     document.getElementById('btnMaknae').addEventListener('click', () => {
         showCard('maknae');
-        trackEvent('button_clicked', { button_type: 'maknae' });
+        
+        // ✅ A/B 테스트: 막내 버튼 클릭 추적
+        trackEvent('button_clicked', { 
+            button_type: 'maknae',
+            event_category: 'interaction',
+            event_label: 'click_youngest_button'
+        });
     });
     
     document.getElementById('btnRefresh').addEventListener('click', () => {
         if (currentType) {
             showCard(currentType);
+            
+            // ✅ 새로고침 버튼 추적
+            trackEvent('button_clicked', {
+                button_type: 'refresh',
+                phrase_type: currentType,
+                event_category: 'interaction',
+                event_label: 'refresh_phrase'
+            });
         }
     });
     
