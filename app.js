@@ -74,6 +74,7 @@ function showCard(type) {
         });
     }, 100);
     
+    // ✅ GA4 이벤트: 문구 생성 (카테고리별)
     const eventName = type === 'workplace' 
         ? 'phrase_generated_office' 
         : 'phrase_generated_maknae';
@@ -101,6 +102,7 @@ async function downloadImage() {
         link.href = canvas.toDataURL('image/png');
         link.click();
         
+        // ✅ GA4 이벤트: 이미지 다운로드 (카테고리별)
         const eventName = currentType === 'workplace'
             ? 'image_downloaded_office'
             : 'image_downloaded_maknae';
@@ -131,6 +133,7 @@ async function shareContent() {
         url: window.location.href
     };
     
+    // ✅ GA4 이벤트: 공유 (카테고리별)
     const eventName = currentType === 'workplace'
         ? 'shared_office'
         : 'shared_maknae';
@@ -178,73 +181,36 @@ function showToast(message) {
     }, 2000);
 }
 
-// 피드백 전송 (구글 폼으로 이동)
-function submitFeedback() {
-    const feedback = document.getElementById('feedbackText').value.trim();
-    
-    if (!feedback) {
-        alert('피드백 내용을 입력해주세요.');
-        return;
-    }
-    
-    // 입력 내용을 미리 채운 구글 폼 열기
-    const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdtndkAyHAOxu8W3596eG4YEr4GFajUZuvhyv2q_2FsJ-OBRg/viewform?usp=pp_url&entry.1285085085=' + encodeURIComponent(feedback);
-    
-    window.open(formUrl, '_blank');
-    
-    showToast('피드백 창이 열렸습니다!');
-    document.getElementById('feedbackText').value = '';
-    document.getElementById('feedbackForm').style.display = 'none';
-    trackEvent('feedback_opened');
-}
-
 // 이벤트 리스너
 document.addEventListener('DOMContentLoaded', () => {
     loadData();
     
+    // 직장인 버튼
     document.getElementById('btnWorkplace').addEventListener('click', () => {
         showCard('workplace');
-        trackEvent('button_clicked_office', {
-            button_type: 'workplace',
-            event_category: 'interaction'
-        });
     });
     
+    // 막내 버튼
     document.getElementById('btnMaknae').addEventListener('click', () => {
         showCard('maknae');
-        trackEvent('button_clicked_maknae', {
-            button_type: 'maknae',
-            event_category: 'interaction'
-        });
     });
     
+    // 새로고침 버튼
     document.getElementById('btnRefresh').addEventListener('click', () => {
         if (currentType) {
             showCard(currentType);
-            const eventName = currentType === 'workplace'
-                ? 'refresh_office'
-                : 'refresh_maknae';
-            
-            trackEvent(eventName, {
-                button_type: 'refresh',
-                phrase_type: currentType,
-                event_category: 'interaction'
-            });
         }
     });
     
+    // 다운로드 버튼
     document.getElementById('btnDownload').addEventListener('click', downloadImage);
+    
+    // 공유 버튼
     document.getElementById('btnShare').addEventListener('click', shareContent);
     
+    // 피드백 버튼
     document.getElementById('feedbackToggle').addEventListener('click', () => {
-        const form = document.getElementById('feedbackForm');
-        form.style.display = form.style.display === 'none' ? 'block' : 'none';
-    });
-    
-    document.getElementById('btnSubmit').addEventListener('click', submitFeedback);
-    
-    document.getElementById('btnCancel').addEventListener('click', () => {
-        document.getElementById('feedbackForm').style.display = 'none';
-        document.getElementById('feedbackText').value = '';
+        window.open('https://docs.google.com/forms/d/e/1FAIpQLSdtndkAyHAOxu8W3596eG4YEr4GFajUZuvhyv2q_2FsJ-OBRg/viewform', '_blank');
+        trackEvent('feedback_opened');
     });
 });
