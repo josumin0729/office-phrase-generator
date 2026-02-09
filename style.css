@@ -54,7 +54,7 @@ body {
    🎪 Hero Section
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .hero {
-    background: var(--color-cream);
+    background: #FAFAFA;  
     padding: var(--spacing-2xl) var(--spacing-lg);
     text-align: center;
     border-bottom: 4px solid var(--color-text);
