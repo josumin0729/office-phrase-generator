@@ -74,7 +74,6 @@ function showCard(type) {
         });
     }, 100);
     
-    // GA4 이벤트: 카테고리별 문구 생성
     const eventName = type === 'workplace' 
         ? 'phrase_generated_office' 
         : 'phrase_generated_maknae';
@@ -102,7 +101,6 @@ async function downloadImage() {
         link.href = canvas.toDataURL('image/png');
         link.click();
         
-        // GA4 이벤트: 카테고리별 이미지 다운로드
         const eventName = currentType === 'workplace'
             ? 'image_downloaded_office'
             : 'image_downloaded_maknae';
@@ -133,7 +131,6 @@ async function shareContent() {
         url: window.location.href
     };
     
-    // GA4 이벤트: 카테고리별 공유
     const eventName = currentType === 'workplace'
         ? 'shared_office'
         : 'shared_maknae';
@@ -181,7 +178,7 @@ function showToast(message) {
     }, 2000);
 }
 
-// 피드백 전송 (iframe 방식)
+// 피드백 전송 (구글 폼으로 이동)
 function submitFeedback() {
     const feedback = document.getElementById('feedbackText').value.trim();
     
@@ -190,50 +187,21 @@ function submitFeedback() {
         return;
     }
     
-    const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdtndkAyHAOxu8W3596eG4YEr4GFajUZuvhyv2q_2FsJ-OBRg/formResponse';
-    const entryId = 'entry.1285085085';
+    // 입력 내용을 미리 채운 구글 폼 열기
+    const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdtndkAyHAOxu8W3596eG4YEr4GFajUZuvhyv2q_2FsJ-OBRg/viewform?usp=pp_url&entry.1285085085=' + encodeURIComponent(feedback);
     
-    // 숨겨진 iframe 생성
-    const iframe = document.createElement('iframe');
-    iframe.name = 'hidden_iframe';
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
+    window.open(formUrl, '_blank');
     
-    // 숨겨진 form 생성
-    const form = document.createElement('form');
-    form.action = formUrl;
-    form.method = 'POST';
-    form.target = 'hidden_iframe';
-    
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = entryId;
-    input.value = feedback;
-    
-    form.appendChild(input);
-    document.body.appendChild(form);
-    
-    // 제출
-    form.submit();
-    
-    // 성공 처리
-    setTimeout(() => {
-        showToast('소중한 피드백 감사합니다!');
-        document.getElementById('feedbackText').value = '';
-        document.getElementById('feedbackForm').style.display = 'none';
-        trackEvent('feedback_submitted');
-        
-        // 정리
-        document.body.removeChild(form);
-        document.body.removeChild(iframe);
-    }, 500);
+    showToast('피드백 창이 열렸습니다!');
+    document.getElementById('feedbackText').value = '';
+    document.getElementById('feedbackForm').style.display = 'none';
+    trackEvent('feedback_opened');
 }
 
 // 이벤트 리스너
 document.addEventListener('DOMContentLoaded', () => {
     loadData();
     
-    // 직장인 버튼
     document.getElementById('btnWorkplace').addEventListener('click', () => {
         showCard('workplace');
         trackEvent('button_clicked_office', {
@@ -242,7 +210,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // 막내 버튼
     document.getElementById('btnMaknae').addEventListener('click', () => {
         showCard('maknae');
         trackEvent('button_clicked_maknae', {
@@ -251,7 +218,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // 새로고침 버튼
     document.getElementById('btnRefresh').addEventListener('click', () => {
         if (currentType) {
             showCard(currentType);
@@ -267,22 +233,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // 다운로드 버튼
     document.getElementById('btnDownload').addEventListener('click', downloadImage);
-    
-    // 공유 버튼
     document.getElementById('btnShare').addEventListener('click', shareContent);
     
-    // 피드백 토글
     document.getElementById('feedbackToggle').addEventListener('click', () => {
         const form = document.getElementById('feedbackForm');
         form.style.display = form.style.display === 'none' ? 'block' : 'none';
     });
     
-    // 피드백 제출
     document.getElementById('btnSubmit').addEventListener('click', submitFeedback);
     
-    // 피드백 취소
     document.getElementById('btnCancel').addEventListener('click', () => {
         document.getElementById('feedbackForm').style.display = 'none';
         document.getElementById('feedbackText').value = '';
