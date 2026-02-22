@@ -1,39 +1,69 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>직장인 문구 생성기 📊 | 현실 공감 vs 귀여운 막내</title>
     <meta name="description" content="400개 직장인 찐 공감 문구! 회사에서 몰래 보는 현실 푸념부터 귀여운 막내 애교까지">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="style.css">
-    
+
     <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXC777H7F5"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
+        gtag('config', 'G-PXC777H7F5');
     </script>
-    
+
     <!-- Meta Pixel Code -->
-    <!-- 여기에 Meta 픽셀 코드 추가 예정 -->
-    
-    <!-- Kakao SDK -->
-    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"
-            integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4" 
-            crossorigin="anonymous"></script>
-    
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1684985552465399');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=1684985552465399&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
+
+
+    <!-- Amplitude Analytics -->
+    <script type="text/javascript">
+        !function(){"use strict";!function(e,t){var r=e.amplitude||{_q:[],_iq:{}};if(r.invoked)e.console&&console.error&&console.error("Amplitude snippet has been loaded.");else{r.invoked=!0;var n=t.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz";n.onload=function(){e.amplitude.runQueuedFunctions||console.log("[Amplitude] Error: could not load SDK")};var s=t.getElementsByTagName("script")[0];function v(e,t){e.prototype[t]=function(){return this._q.push({name:t,args:Array.prototype.slice.call(arguments,0)}),this}}s.parentNode.insertBefore(n,s);for(var o=function(){return this._q=[],this},i=["add","append","clearAll","prepend","set","setOnce","unset","preInsert","postInsert","remove","getUserProperties"],a=0;a<i.length;a++)v(o,i[a]);r.Identify=o;for(var c=function(){return this._q=[],this},u=["getEventProperties","setProductId","setQuantity","setPrice","setRevenue","setRevenueType","setEventProperties"],l=0;l<u.length;l++)v(c,u[l]);r.Revenue=c;var p=["getDeviceId","setDeviceId","getSessionId","setSessionId","getUserId","setUserId","setOptOut","setTransport","reset","extendSession"],d=["init","add","remove","track","logEvent","identify","groupIdentify","setGroup","revenue","flush"];function f(e){function t(t,r){e[t]=function(){var n={promise:new Promise((r=>{e._q.push({name:t,args:Array.prototype.slice.call(arguments,0),resolve:r})}))};if(r)return n;e._q.push({name:t,args:Array.prototype.slice.call(arguments,0)})}}for(var r=0;r<p.length;r++)t(p[r],!1);for(var n=0;n<d.length;n++)t(d[n],!0)}f(r);r.getInstance=function(e){return e=(!e||e.length===0?"$default_instance":e).toLowerCase(),Object.prototype.hasOwnProperty.call(r._iq,e)||(r._iq[e]={_q:[]},f(r._iq[e])),r._iq[e]};e.amplitude=r}}(window,document)}();
+
+        amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
+            defaultTracking: {
+                sessions: true,
+                pageViews: true,
+                formInteractions: false,
+                fileDownloads: false
+            }
+        });
+    </script>
+    <!-- End Amplitude Analytics -->
+
     <!-- html2canvas CDN -->
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="app.js"></script>
 </head>
+
 <body>
     <div class="container">
         <!-- 히어로 섹션 -->
@@ -48,7 +78,7 @@
         <!-- 버튼 영역 -->
         <section class="button-section">
             <h2 class="section-title">어떤 문구를 뽑아볼까요?</h2>
-            
+
             <div class="button-grid">
                 <!-- 현실 직장인 버튼 -->
                 <button class="phrase-btn btn-workplace" id="btnWorkplace">
@@ -71,8 +101,6 @@
         </section>
 
         <!-- 카드 출력 영역 -->
-
-        
         <section class="card-section" id="cardSection" style="display: none;">
             <div class="card-wrapper">
                 <div class="phrase-card" id="phraseCard">
@@ -107,11 +135,7 @@
             </button>
             <div class="feedback-form" id="feedbackForm" style="display: none;">
                 <h3 class="feedback-title">의견을 들려주세요!</h3>
-                <textarea 
-                    id="feedbackText" 
-                    placeholder="추가했으면 하는 문구나 개선사항을 자유롭게 남겨주세요 😊"
-                    maxlength="500"
-                ></textarea>
+                <textarea id="feedbackText" placeholder="추가했으면 하는 문구나 개선사항을 자유롭게 남겨주세요 😊" maxlength="500"></textarea>
                 <div class="feedback-actions">
                     <button class="btn-submit" id="btnSubmit">전송하기</button>
                     <button class="btn-cancel" id="btnCancel">취소</button>
@@ -122,9 +146,11 @@
         <!-- 하단 정보 -->
         <div class="footer-info">
             <p>Made with 💚 for 직장인</p>
-            <p class="footer-ai">이 콘텐츠는 Claude로 제작되었습니다</p>
             <p class="footer-copyright">© 2026 직장인 문구 생성기</p>
+            <p class="footer-ai">이 콘텐츠는 Claude로 제작되었습니다</p>
+
         </div>
     </div>
 </body>
+
 </html>

@@ -1,7 +1,10 @@
-// GA4 이벤트 트래킹
+// GA4 + Amplitude 이벤트 트래킹
 function trackEvent(eventName, eventParams = {}) {
     if (typeof gtag !== 'undefined') {
         gtag('event', eventName, eventParams);
+    }
+    if (typeof amplitude !== 'undefined') {
+        amplitude.track(eventName, eventParams);
     }
 }
 
