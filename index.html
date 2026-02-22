@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Dongle:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
     
@@ -52,7 +52,7 @@
             <div class="button-grid">
                 <!-- 현실 직장인 버튼 -->
                 <button class="phrase-btn btn-workplace" id="btnWorkplace">
-                    <div class="btn-icon">😭</div>
+                    <div class="btn-icon">💼</div>
                     <div class="btn-content">
                         <div class="btn-title">현실 직장인</div>
                         <div class="btn-desc">찐 공감 푸념</div>
@@ -71,11 +71,12 @@
         </section>
 
         <!-- 카드 출력 영역 -->
+
+        
         <section class="card-section" id="cardSection" style="display: none;">
             <div class="card-wrapper">
                 <div class="phrase-card" id="phraseCard">
                     <p class="card-text" id="cardText">문구가 여기 표시됩니다</p>
-                    <p class="card-emoticon" id="cardEmoticon">ㅠㅠ</p>
                     <div class="card-credit">- 직장인 문구 생성기 -</div>
                 </div>
             </div>
@@ -92,21 +93,10 @@
 
             <!-- 공유 버튼 섹션 -->
             <div class="share-section">
-                <div class="share-title">공유하기</div>
-                <div class="share-buttons">
-                    <button class="share-btn btn-kakao" id="btnKakao">
-                        <span class="share-icon">💬</span>
-                        <span class="share-text">카톡</span>
-                    </button>
-                    <button class="share-btn btn-x" id="btnX">
-                        <span class="share-icon">𝕏</span>
-                        <span class="share-text">X</span>
-                    </button>
-                    <button class="share-btn btn-share" id="btnShare">
-                        <span class="share-icon">📤</span>
-                        <span class="share-text">더보기</span>
-                    </button>
-                </div>
+                <button class="share-btn-single" id="btnShare">
+                    <span class="share-icon">📤</span>
+                    <span class="share-text">공유하기</span>
+                </button>
             </div>
         </section>
 
@@ -132,9 +122,8 @@
         <!-- 하단 정보 -->
         <div class="footer-info">
             <p>Made with 💚 for 직장인</p>
-            <p class="footer-copyright">© 2026 직장인 문구 생성기</p>
             <p class="footer-ai">이 콘텐츠는 Claude로 제작되었습니다</p>
-            
+            <p class="footer-copyright">© 2026 직장인 문구 생성기</p>
         </div>
     </div>
 </body>
