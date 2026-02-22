@@ -8,11 +8,23 @@ function trackEvent(eventName, eventParams = {}) {
     }
 }
 
+// UTM 파라미터 추출
+function getUtmParams() {
+    const params = new URLSearchParams(window.location.search);
+    const utm = {};
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(key => {
+        const val = params.get(key);
+        if (val) utm[key] = val;
+    });
+    return utm;
+}
+
 // 전역 변수
 let currentType = null;
 let currentPhrase = null;
 let workplaceData = null;
 let maknaeData = null;
+let utmParams = {};
 
 // JSON 데이터 로드
 async function loadData() {
@@ -77,15 +89,11 @@ function showCard(type) {
         });
     }, 100);
     
-    // GA4 이벤트: 카테고리별 문구 생성
-    const eventName = type === 'workplace' 
-        ? 'phrase_generated_office' 
-        : 'phrase_generated_maknae';
-    
-    trackEvent(eventName, {
+    // 퍼널 3단계: 결과 보기
+    trackEvent('result_viewed', {
         phrase_type: type,
         category: currentPhrase.category,
-        event_category: 'engagement'
+        ...utmParams
     });
 }
 
@@ -105,14 +113,10 @@ async function downloadImage() {
         link.href = canvas.toDataURL('image/png');
         link.click();
         
-        // GA4 이벤트: 카테고리별 이미지 다운로드
-        const eventName = currentType === 'workplace'
-            ? 'image_downloaded_office'
-            : 'image_downloaded_maknae';
-        
-        trackEvent(eventName, {
+        // 퍼널 4단계: 저장
+        trackEvent('saved', {
             phrase_type: currentType,
-            event_category: 'conversion'
+            ...utmParams
         });
         
         showToast('이미지가 저장되었습니다!');
@@ -136,27 +140,24 @@ async function shareContent() {
         url: window.location.href
     };
     
-    // GA4 이벤트: 카테고리별 공유
-    const eventName = currentType === 'workplace'
-        ? 'shared_office'
-        : 'shared_maknae';
-    
     try {
         if (navigator.share) {
             await navigator.share(shareData);
-            trackEvent(eventName, {
+            // 퍼널 4단계: 공유
+            trackEvent('shared', {
                 method: 'native',
                 phrase_type: currentType,
-                event_category: 'share'
+                ...utmParams
             });
             showToast('공유했습니다!');
         } else {
             const copyText = text + '\n\n' + window.location.href;
             await navigator.clipboard.writeText(copyText);
-            trackEvent(eventName, {
+            // 퍼널 4단계: 공유 (클립보드)
+            trackEvent('shared', {
                 method: 'clipboard',
                 phrase_type: currentType,
-                event_category: 'share'
+                ...utmParams
             });
             showToast('링크가 복사되었습니다!');
         }
@@ -187,14 +188,22 @@ function showToast(message) {
 // 이벤트 리스너
 document.addEventListener('DOMContentLoaded', () => {
     loadData();
-    
+
+    // UTM 캡처 + 퍼널 1단계: 페이지 진입
+    utmParams = getUtmParams();
+    trackEvent('page_viewed', { page: 'landing', ...utmParams });
+
     // 직장인 버튼
     document.getElementById('btnWorkplace').addEventListener('click', () => {
+        // 퍼널 2단계: CTA 클릭
+        trackEvent('cta_clicked', { phrase_type: 'workplace', ...utmParams });
         showCard('workplace');
     });
-    
+
     // 막내 버튼
     document.getElementById('btnMaknae').addEventListener('click', () => {
+        // 퍼널 2단계: CTA 클릭
+        trackEvent('cta_clicked', { phrase_type: 'maknae', ...utmParams });
         showCard('maknae');
     });
     
