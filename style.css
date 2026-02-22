@@ -24,8 +24,7 @@
     --radius-lg: 20px;
     --radius-xl: 24px;
     --radius-round: 100px;
-    --font-main: 'Noto Sans KR', sans-serif;
-    --font-cute: 'Dongle', sans-serif;
+    --font-main: 'Jua', sans-serif;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -43,35 +42,43 @@ body {
     color: var(--color-text);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 .container {
     max-width: 100%;
     min-height: 100vh;
     padding-bottom: var(--spacing-2xl);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    🎪 Hero Section
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .hero {
-    background: var(--color-pink);
+    background: #FAFAFA;
     padding: var(--spacing-2xl) var(--spacing-lg);
     text-align: center;
+    border-bottom: 4px solid var(--color-text);
+    margin: 0 auto;
+    width: 100%;
 }
 
 .hero-title {
     font-size: 32px;
-    font-weight: 900;
     margin-bottom: var(--spacing-md);
-    color: white;
+    color: var(--color-text);
 }
 
 .hero-subtitle {
     font-size: 16px;
-    color: #FFFFFF;
+    color: var(--color-text);
     line-height: 1.8;
-    font-weight: 500;
 }
 
 .highlight-mint {
@@ -79,7 +86,6 @@ body {
     color: var(--color-text);
     padding: 2px 10px;
     border-radius: 6px;
-    font-weight: 700;
 }
 
 .highlight-pink {
@@ -87,7 +93,6 @@ body {
     color: var(--color-text);
     padding: 2px 10px;
     border-radius: 6px;
-    font-weight: 700;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -97,11 +102,11 @@ body {
     padding: var(--spacing-xl) var(--spacing-lg);
     max-width: 600px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .section-title {
     font-size: 20px;
-    font-weight: 700;
     text-align: center;
     margin-bottom: var(--spacing-xl);
 }
@@ -110,6 +115,9 @@ body {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .phrase-btn {
@@ -123,6 +131,8 @@ body {
     cursor: pointer;
     transition: opacity 0.2s;
     min-height: 88px;
+    width: 100%;
+    max-width: 500px;
 }
 
 .phrase-btn:hover {
@@ -137,17 +147,8 @@ body {
     background: var(--color-mint);
 }
 
-.btn-workplace .btn-title {
-    font-weight: 900;
-}
-
 .btn-maknae {
     background: var(--color-pastel-pink);
-}
-
-.btn-maknae .btn-title {
-    font-family: var(--font-cute);
-    font-weight: 700;
 }
 
 .btn-icon {
@@ -180,6 +181,7 @@ body {
     padding: var(--spacing-xl) var(--spacing-lg);
     max-width: 600px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .card-wrapper {
@@ -210,22 +212,13 @@ body {
 
 .phrase-card.type-workplace .card-text {
     font-family: var(--font-main);
-    font-weight: 900;
     font-size: 64px;
     line-height: 1.4;
-    letter-spacing: -2px;
     color: var(--color-text);
     word-break: keep-all;
     margin: auto 0;
     text-align: center;
     width: 100%;
-}
-
-.phrase-card.type-workplace .card-emoticon {
-    font-family: var(--font-main);
-    font-size: 48px;
-    margin: 20px 0 0 0;
-    color: var(--color-text);
 }
 
 /* 막내 카드 */
@@ -235,22 +228,14 @@ body {
 }
 
 .phrase-card.type-maknae .card-text {
-    font-family: var(--font-cute);
-    font-weight: 700;
+    font-family: var(--font-main);
     font-size: 64px;
-    line-height: 1.3;
+    line-height: 1.4;
     color: var(--color-text);
     word-break: keep-all;
     margin: auto 0;
     text-align: center;
     width: 100%;
-}
-
-.phrase-card.type-maknae .card-emoticon {
-    font-family: var(--font-main);
-    font-size: 48px;
-    margin: 20px 0 0 0;
-    color: var(--color-text);
 }
 
 .card-credit {
@@ -260,7 +245,6 @@ body {
     transform: translateX(-50%);
     font-size: 12px;
     color: var(--color-gray);
-    font-weight: 400;
     white-space: nowrap;
 }
 
@@ -281,7 +265,6 @@ body {
     background: var(--color-cream);
     font-family: var(--font-main);
     font-size: 14px;
-    font-weight: 600;
     cursor: pointer;
     transition: opacity 0.2s;
     min-height: 48px;
@@ -299,44 +282,29 @@ body {
    📤 Share Section
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .share-section {
-    padding: var(--spacing-lg);
-    background: var(--color-cream);
-    border-radius: var(--radius-lg);
-    border: 3px dashed #E0E0E0;
-}
-
-.share-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: var(--spacing-md);
-    text-align: center;
-}
-
-.share-buttons {
     display: flex;
-    gap: var(--spacing-sm);
     justify-content: center;
 }
 
-.share-btn {
-    flex: 1;
-    max-width: 120px;
-    padding: var(--spacing-md) var(--spacing-sm);
+.share-btn-single {
+    width: 100%;
+    max-width: 300px;
+    padding: var(--spacing-md);
     border: 3px solid var(--color-border);
     border-radius: var(--radius-md);
-    background: white;
+    background: var(--color-cream);
     font-family: var(--font-main);
+    font-size: 16px;
     cursor: pointer;
     transition: opacity 0.2s;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 4px;
-    min-height: 70px;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    min-height: 56px;
 }
 
-.share-btn:hover {
+.share-btn-single:hover {
     opacity: 0.7;
 }
 
@@ -345,20 +313,7 @@ body {
 }
 
 .share-text {
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.btn-kakao {
-    background: #FEE500;
-}
-
-.btn-x {
-    background: #E8E8E8;
-}
-
-.btn-share {
-    background: #C3B1E1;
+    font-size: 16px;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -368,6 +323,7 @@ body {
     max-width: 600px;
     margin: var(--spacing-2xl) auto 0;
     padding: 0 var(--spacing-lg);
+    width: 100%;
 }
 
 .feedback-toggle {
@@ -378,7 +334,6 @@ body {
     border-radius: var(--radius-md);
     font-family: var(--font-main);
     font-size: 15px;
-    font-weight: 600;
     cursor: pointer;
     transition: opacity 0.2s;
 }
@@ -397,7 +352,6 @@ body {
 
 .feedback-title {
     font-size: 16px;
-    font-weight: 700;
     margin-bottom: var(--spacing-md);
 }
 
@@ -426,7 +380,6 @@ body {
     border-radius: var(--radius-md);
     font-family: var(--font-main);
     font-size: 14px;
-    font-weight: 600;
     cursor: pointer;
 }
 
@@ -446,6 +399,8 @@ body {
     padding: var(--spacing-xl) var(--spacing-lg);
     font-size: 13px;
     color: var(--color-gray);
+    margin: 0 auto;
+    width: 100%;
 }
 
 .footer-info p {
@@ -469,29 +424,21 @@ body {
         font-size: 24px;
     }
     
-    .phrase-card.type-workplace .card-text {
-        font-size: 48px;
-    }
-    
+    .phrase-card.type-workplace .card-text,
     .phrase-card.type-maknae .card-text {
         font-size: 48px;
-    }
-    
-    .card-emoticon {
-        font-size: 36px !important;
-    }
-    
-    .share-buttons {
-        gap: var(--spacing-xs);
-    }
-    
-    .share-btn {
-        min-height: 60px;
     }
 }
 
 @media (min-width: 768px) {
     .button-grid {
         flex-direction: row;
+        justify-content: center;
+        gap: var(--spacing-lg);
+    }
+    
+    .phrase-btn {
+        flex: 1;
+        max-width: 280px;
     }
 }
