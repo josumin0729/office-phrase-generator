@@ -207,9 +207,14 @@ document.addEventListener('DOMContentLoaded', () => {
         showCard('maknae');
     });
     
-    // 새로고침 버튼
+   // 새로고침 버튼
     document.getElementById('btnRefresh').addEventListener('click', () => {
         if (currentType) {
+            // 다시 뽑기 이벤트 트래킹
+            trackEvent('phrase_refreshed', {
+                phrase_type: currentType,
+                ...utmParams
+            });
             showCard(currentType);
         }
     });
