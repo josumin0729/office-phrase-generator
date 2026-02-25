@@ -50,28 +50,30 @@
 <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.13.10-min.js.gz"></script>
 
 <script>
-(function() {
-function startAmplitude() {
-if (window.amplitude && window.sessionReplay && !window.amplitude._isInitialized) {
-// 1. 리플레이 플러그인 설정
-const replayPlugin = window.sessionReplay.plugin({ sampleRate: 1.0 });
-// 2. 플러그인 추가
-window.amplitude.add(replayPlugin);
-// 3. 단 한 번만 초기화
+window.amplitude = window.amplitude || { _q: [], _iq: {} };
+// 리플레이 플러그인 추가
+window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
+// 초기화 
 window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
-autocapture: {
-sessions: true,
-pageViews: true,
-formInteractions: false,
-fileDownloads: false
+"fetchRemoteConfig": true,
+"autocapture": {
+"attribution": true,
+"fileDownloads": true,
+"formInteractions": true,
+"pageViews": true,
+"sessions": true,
+"elementInteractions": false,
+"networkTracking": true,
+"webVitals": true,
+"frustrationInteractions": {
+"thrashedCursor": true,
+"errorClicks": true,
+"deadClicks": true,
+"rageClicks": true
+}
 }
 });
-window.amplitude._isInitialized = true;
-console.log('✅ 통합 설정 완료');
-}
-}
-// 함수 실행
-startAmplitude();
+</script>
 })();
 </script>
 <!-- End Amplitude Analytics -->
