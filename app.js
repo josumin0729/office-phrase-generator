@@ -214,7 +214,7 @@ function showToast(message) {
 
 // 이벤트 리스너
 document.addEventListener('DOMContentLoaded', () => {
-    initAmplitudeWithReplay();
+    initAmplitudeSystem();    
     loadData();
 
     // UTM 캡처 + 퍼널 1단계: 페이지 진입
