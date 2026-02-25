@@ -50,28 +50,27 @@
 
 <script>
 window.amplitude = window.amplitude || { _q: [], _iq: {} };
-// 리플레이 플러그인 추가
-window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
-// 초기화 
+
+function safeInit() {
+// 세션 리플레이 플러그인이 로드되었는지 확인
+if (window.sessionReplay && window.sessionReplay.plugin) {
+window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1 }));
 window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
 "fetchRemoteConfig": true,
 "autocapture": {
-"attribution": true,
-"fileDownloads": true,
-"formInteractions": true,
-"pageViews": true,
 "sessions": true,
-"elementInteractions": false,
-"networkTracking": true,
-"webVitals": true,
-"frustrationInteractions": {
-"thrashedCursor": true,
-"errorClicks": true,
-"deadClicks": true,
-"rageClicks": true
-}
+"pageViews": true,
+"formInteractions": true
 }
 });
+console.log("✅ 앰플리튜드 연결 및 리플레이 준비 완료");
+} else {
+// 로드 전이면 0.1초 뒤 다시 시도
+setTimeout(safeInit, 100);
+}
+}
+
+safeInit();
 </script>
 })();
 </script>
