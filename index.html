@@ -46,32 +46,30 @@
     <!-- End Meta Pixel Code -->
 
     <!-- Amplitude Analytics -->
-   <script async src="https://cdn.amplitude.com/script/3d8a05c283561e8155e663be5cdbc8da.js"></script>
-
+  <script async src="https://cdn.amplitude.com/script/3d8a05c283561e8155e663be5cdbc8da.js"></script>
 <script>
-window.amplitude = window.amplitude || { _q: [], _iq: {} };
-
-function forceInit() {
-if (window.amplitude && typeof window.amplitude.init === 'function' && window.sessionReplay) {
-window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1 }));
-window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
-"fetchRemoteConfig": true,
-"autocapture": {
-"sessions": true,
-"pageViews": true,
-"formInteractions": true
-}
-});
-console.log("✅ [SYSTEM] 리플레이 트리거 발송 완료");
-window.amplitude.track('session_start_for_replay');
-} else {
-// 로드 안 됐으면 0.1초마다 재시도
-setTimeout(forceInit, 100);
-}
-}
-
-forceInit();
+    window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
+    window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
+        "fetchRemoteConfig": true,
+        "autocapture": {
+            "attribution": true,
+            "fileDownloads": true,
+            "formInteractions": true,
+            "pageViews": true,
+            "sessions": true,
+            "elementInteractions": false,
+            "networkTracking": true,
+            "webVitals": true,
+            "frustrationInteractions": {
+                "thrashedCursor": true,
+                "errorClicks": true,
+                "deadClicks": true,
+                "rageClicks": true
+            }
+        }
+    });
 </script>
+
 
 </script>
 <!-- End Amplitude Analytics -->
