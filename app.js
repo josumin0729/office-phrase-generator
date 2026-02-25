@@ -26,6 +26,22 @@ let workplaceData = null;
 let maknaeData = null;
 let utmParams = {};
 
+ function initAmplitudeWithReplay() {
+    if (typeof amplitude !== 'undefined' && window.sessionReplay) {
+        const sessionReplayTracking = window.sessionReplay.plugin({ sampleRate: 1.0 });
+        amplitude.add(sessionReplayTracking);
+        amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
+            autocapture: {
+                sessions: true,
+                pageViews: true,
+                formInteractions: true, 
+                fileDownloads: false
+            }
+        });
+        console.log('Amplitude Replay Initialized');
+    }
+}
+
 // JSON 데이터 로드
 async function loadData() {
     try {
@@ -187,6 +203,7 @@ function showToast(message) {
 
 // 이벤트 리스너
 document.addEventListener('DOMContentLoaded', () => {
+    initAmplitudeWithReplay();
     loadData();
 
     // UTM 캡처 + 퍼널 1단계: 페이지 진입
