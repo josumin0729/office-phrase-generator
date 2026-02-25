@@ -46,21 +46,34 @@
     <!-- End Meta Pixel Code -->
 
     <!-- Amplitude Analytics -->
-      <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.12-min.js.gz"></script>
+    <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.12-min.js.gz"></script>
 <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.13.10-min.js.gz"></script>
 
-
 <script>
-  window.onload = function() {
-    if (window.amplitude && window.sessionReplay) {
-      const sessionReplayTracking = window.sessionReplay.plugin({ sampleRate: 1.0 });
-      window.amplitude.add(sessionReplayTracking);
-      window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
-        autocapture: { sessions: true, pageViews: true, formInteractions: false, fileDownloads: false }
-      });
-      console.log("✅ Amplitude 리플레이 설정 완료");
+function initAmplitudeSystem() {
+    // 중복 실행 방지 및 객체 로드 확인
+    if (window.amplitude && window.sessionReplay && !window.amplitude._isInitialized) {
+        
+        // 플러그인 생성 및 추가 (HTML에 있던 로직과 동일)
+        const sessionReplayTracking = window.sessionReplay.plugin({ sampleRate: 1.0 });
+        window.amplitude.add(sessionReplayTracking);
+
+        // 초기화 실행
+        window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
+            autocapture: {
+                sessions: true,
+                pageViews: true,
+                formInteractions: false,
+                fileDownloads: false
+            }
+        });
+        
+        window.amplitude._isInitialized = true; 
+        console.log('✅ Amplitude & Replay Integrated System Ready');
     }
-  };
+    initAmplitudeSystem();
+};
+    
 </script>
 <!-- End Amplitude Analytics -->
     <!-- html2canvas CDN -->
