@@ -46,17 +46,14 @@
     <!-- End Meta Pixel Code -->
 
     <!-- Amplitude Analytics -->
-    <script async src="https://cdn.amplitude.com/script/3d8a05c283561e8155e663be5cdbc8da.js"></script>
+   <script async src="https://cdn.amplitude.com/script/3d8a05c283561e8155e663be5cdbc8da.js"></script>
 
 <script>
 window.amplitude = window.amplitude || { _q: [], _iq: {} };
 
 function forceInit() {
-// 앰플리튜드와 플러그인이 모두 로드되었는지 확인
 if (window.amplitude && typeof window.amplitude.init === 'function' && window.sessionReplay) {
-// 플러그인 추가
 window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1 }));
-// 초기화
 window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
 "fetchRemoteConfig": true,
 "autocapture": {
@@ -67,8 +64,14 @@ window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
 });
 console.log("✅ [SYSTEM] 리플레이 트리거 발송 완료");
 window.amplitude.track('session_start_for_replay');
+} else {
+// 로드 안 됐으면 0.1초마다 재시도
+setTimeout(forceInit, 100);
 }
 }
+
+forceInit();
+</script>
 
 </script>
 <!-- End Amplitude Analytics -->
