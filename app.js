@@ -26,19 +26,30 @@ let workplaceData = null;
 let maknaeData = null;
 let utmParams = {};
 
- function initAmplitudeWithReplay() {
-    if (typeof amplitude !== 'undefined' && window.sessionReplay) {
-        const sessionReplayTracking = window.sessionReplay.plugin({ sampleRate: 1.0 });
-        amplitude.add(sessionReplayTracking);
-        amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
+ function initAmplitudeSystem() {
+    // 이미 초기화되었다면 중복 실행 방지
+    if (window.amplitude && window.sessionReplay && !window.amplitude._isInitialized) {
+        
+        // [중요] 세션 리플레이 플러그인을 먼저 생성
+        const sessionReplayTracking = window.sessionReplay.plugin({ 
+            sampleRate: 1.0 
+        });
+
+        // [핵심] 플러그인을 먼저 추가하고
+        window.amplitude.add(sessionReplayTracking);
+
+        // [핵심] 그 다음 '한 번만' init을 호출해야 Device ID가 일치됩니다.
+        window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
             autocapture: {
                 sessions: true,
                 pageViews: true,
-                formInteractions: true, 
+                formInteractions: false, // 보안 이슈 방지를 위해 false 권장
                 fileDownloads: false
             }
         });
-        console.log('Amplitude Replay Initialized');
+        
+        window.amplitude._isInitialized = true; 
+        console.log('✅ Amplitude & Replay Integrated System Ready');
     }
 }
 
