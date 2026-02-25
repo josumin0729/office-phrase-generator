@@ -48,6 +48,20 @@
     <!-- Amplitude Analytics -->
       <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.12-min.js.gz"></script>
 <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.13.10-min.js.gz"></script>
+
+
+<script>
+  window.onload = function() {
+    if (window.amplitude && window.sessionReplay) {
+      const sessionReplayTracking = window.sessionReplay.plugin({ sampleRate: 1.0 });
+      window.amplitude.add(sessionReplayTracking);
+      window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
+        autocapture: { sessions: true, pageViews: true, formInteractions: false, fileDownloads: false }
+      });
+      console.log("✅ Amplitude 리플레이 설정 완료");
+    }
+  };
+</script>
 <!-- End Amplitude Analytics -->
     <!-- html2canvas CDN -->
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
