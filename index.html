@@ -48,36 +48,32 @@
     <!-- Amplitude Analytics -->
 <script async src="https://cdn.amplitude.com/script/3d8a05c283561e8155e663be5cdbc8da.js"></script>
 <script>
-    // 1. 객체가 없으면 미리 만들어서 'add'가 undefined가 되지 않게 방어
     window.amplitude = window.amplitude || { _q: [], _iq: {} };
 
-    // 2. 앰플리튜드 내부 큐 시스템을 활용해 실행 예약
-    window.amplitude.add = window.amplitude.add || function(p) { window.amplitude._q.push(['add', p]); };
-
-    // 3. 리플레이 플러그인 등록
-    window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
-
-    // 4. 초기화 (룰렛 설정 그대로 적용)
-    window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
-        "fetchRemoteConfig": true,
-        "autocapture": {
-            "attribution": true,
-            "fileDownloads": true,
-            "formInteractions": true,
-            "pageViews": true,
-            "sessions": true,
-            "elementInteractions": false,
-            "networkTracking": true,
-            "webVitals": true,
-            "frustrationInteractions": {
-                "thrashedCursor": true,
-                "errorClicks": true,
-                "deadClicks": true,
-                "rageClicks": true
-            }
+    function startAmplitude() {
+        // 앰플리튜드와 리플레이 플러그인이 '둘 다' 로드되었는지 확인
+        if (window.amplitude && typeof window.amplitude.init === 'function' && window.sessionReplay) {
+            
+            window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
+            
+            window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
+                "fetchRemoteConfig": true,
+                "autocapture": {
+                    "sessions": true,
+                    "pageViews": true,
+                    "formInteractions": true,
+                    "attribution": true,
+                    "networkTracking": true
+                }
+            });
+            console.log("✅ [SYSTEM] 앰플리튜드 가동 성공");
+        } else {
+            // 아직 로드 안 됐으면 0.1초 뒤 다시 확인 (무한 루프 방지)
+            setTimeout(startAmplitude, 100);
         }
-    });
+    }
 
+    startAmplitude();
 </script>
 
 
