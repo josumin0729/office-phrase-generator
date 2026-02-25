@@ -51,7 +51,8 @@
 <script>
 window.amplitude = window.amplitude || { _q: [], _iq: {} };
 
-function safeInit() {
+function initializeProject() {
+// 앰플리튜드 객체가 완전히 준비되었는지 확인
 if (window.amplitude && typeof window.amplitude.init === 'function') {
 window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
 "fetchRemoteConfig": true,
@@ -61,13 +62,14 @@ window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
 "formInteractions": true
 }
 });
-console.log("✅ 앰플리튜드 자동 로드 및 초기화 완료");
+console.log("✅ 직장인 문구 생성기 세팅 완료!");
 } else {
-setTimeout(safeInit, 100);
+// 준비 안 됐으면 0.1초 뒤 다시 시도
+setTimeout(initializeProject, 100);
 }
 }
 
-safeInit();
+initializeProject();
 </script>
 <!-- End Amplitude Analytics -->
     <!-- html2canvas CDN -->
