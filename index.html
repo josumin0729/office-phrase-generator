@@ -44,35 +44,11 @@
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=1684985552465399&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
-<script>
- window.onload = function() {
-  // 1. Amplitude와 Session Replay가 로드되었는지 확인
-  if (window.amplitude && window.sessionReplay) {
-    
-    // 2. 세션 리플레이 플러그인 설정 (인스턴스 생성)
-    const sessionReplayTracking = window.sessionReplay.plugin({
-      sampleRate: 1.0
-    });
 
-    // 3. 플러그인 추가
-    window.amplitude.add(sessionReplayTracking);
-
-    // 4. 초기화 (이때 Device ID가 동기화됩니다)
-    window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
-      autocapture: {
-        sessions: true,
-        pageViews: true,
-        formInteractions: false,
-        fileDownloads: false
-      }
-    });
-
-    console.log("✅ Amplitude 리플레이 설정 완료");
-  } else {
-    console.error("❌ SDK 로드 실패: 스크립트 태그를 다시 확인해주세요.");
-  }
-};
-</script>
+    <!-- Amplitude Analytics -->
+      <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.12-min.js.gz"></script>
+<script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.13.10-min.js.gz"></script>
+<!-- End Amplitude Analytics -->
     <!-- html2canvas CDN -->
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="app.js"></script>
