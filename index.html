@@ -49,11 +49,15 @@
     <script async src="https://cdn.amplitude.com/script/3d8a05c283561e8155e663be5cdbc8da.js"></script>
 
 <script>
+<script>
 window.amplitude = window.amplitude || { _q: [], _iq: {} };
 
-function initializeProject() {
-// 앰플리튜드 객체가 완전히 준비되었는지 확인
-if (window.amplitude && typeof window.amplitude.init === 'function') {
+function forceInit() {
+// 앰플리튜드와 플러그인이 모두 로드되었는지 확인
+if (window.amplitude && typeof window.amplitude.init === 'function' && window.sessionReplay) {
+// 플러그인 추가
+window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1 }));
+// 초기화
 window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
 "fetchRemoteConfig": true,
 "autocapture": {
@@ -62,14 +66,14 @@ window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
 "formInteractions": true
 }
 });
-console.log("✅ 직장인 문구 생성기 세팅 완료!");
+console.log("✅ [강제] 앰플리튜드 초기화 성공");
 } else {
-// 준비 안 됐으면 0.1초 뒤 다시 시도
-setTimeout(initializeProject, 100);
+// 로드 안 됐으면 0.1초마다 계속 시도
+setTimeout(forceInit, 100);
 }
 }
 
-initializeProject();
+forceInit();
 </script>
 <!-- End Amplitude Analytics -->
     <!-- html2canvas CDN -->
