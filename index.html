@@ -65,14 +65,11 @@ window.amplitude.init('3d8a05c283561e8155e663be5cdbc8da', {
 "formInteractions": true
 }
 });
-console.log("✅ [강제] 앰플리튜드 초기화 성공");
-} else {
-// 로드 안 됐으면 0.1초마다 계속 시도
-setTimeout(forceInit, 100);
+console.log("✅ [SYSTEM] 리플레이 트리거 발송 완료");
+window.amplitude.track('session_start_for_replay');
 }
 }
 
-forceInit();
 </script>
 <!-- End Amplitude Analytics -->
     <!-- html2canvas CDN -->
