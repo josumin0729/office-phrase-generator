@@ -54,7 +54,9 @@
                 pageViews: true,
                 formInteractions: false,
                 fileDownloads: false
-            }
+            },  plugins: [
+        new amplitudeSessionReplay.plugin({ sampleRate: 1 })
+    ]
         });
     </script>
     <!-- End Amplitude Analytics -->
