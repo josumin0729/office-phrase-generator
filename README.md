@@ -1,6 +1,6 @@
 # 직장인 문구 생성기 💼
 
-> AI 기반 콘텐츠 생성 + 퍼포먼스 마케팅 실험 프로젝트
+> AI 기반 콘텐츠 생성 + A/B테스트 실험 프로젝트
 
 [![Live Demo](https://img.shields.io/badge/🌐_Live-Demo-4A90E2?style=for-the-badge)](https://josumin0729.github.io/office-phrase-generator/)
 [![Blog Series](https://img.shields.io/badge/📝_Velog-Series-20C997?style=for-the-badge)](https://velog.io/@josumin0729)
@@ -158,12 +158,12 @@ open http://localhost:8000
 
 <br>
 
-## 👤 About
+## 👤 제작자
 
-**조수민** | Product Manager 
-- 🎯  데이터 분석, 프로덕트 그로스
-- 📫 [LinkedIn](https://www.linkedin.com/in/jsm0729) | [GitHub](https://github.com/josumin0729)
-
+**조수민**
+- GitHub: [@josumin0729](https://github.com/josumin0729)
+- LinkedIn: https://www.linkedin.com/in/jsm0729
+- 노션: https://pmjsm.notion.site/0729portfolio
 <br>
 
 ## 📄 License
