@@ -49,17 +49,24 @@ office-phrase-generator/
 
 ## 📊 데이터 분석
 
-### GA4 이벤트 추적
+### 앰플리튜드 이벤트 추적
 
 | 이벤트 | 설명 |
 |--------|------|
-| `phrase_generated_office` | 직장인 문구 생성 |
-| `phrase_generated_maknae` | 막내 문구 생성 |
-| `image_downloaded_office` | 직장인 이미지 저장 |
-| `image_downloaded_maknae` | 막내 이미지 저장 |
-| `shared_office` | 직장인 문구 공유 |
-| `shared_maknae` | 막내 문구 공유 |
-| `feedback_opened` | 피드백 폼 열람 |
+| `page_viewed` | 랜딩|
+| `cta_clicked ` | 버튼 선택 |
+| `result_viewed` | 결과 보기|
+| `saved/shared` | 저장/공유 |
+
+```
+
+### UTM 구조
+- utm_source=meta
+- utm_medium=paid_social
+- utm_campaign=office-phrase-generator
+- utm_content={{[ad.name](http://ad.name/)}} A안: workplace / B안: maknae
+
+
 
 <br>
 
