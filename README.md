@@ -153,7 +153,7 @@ open http://localhost:8000
 ## 📂 관련 링크
 
 - 🌐 **Live Demo**: [직장인 문구 생성기](https://josumin0729.github.io/office-phrase-generator/)
-- 📝 **노션 포트폴리오**: (https://pmjsm.notion.site/0729portfolio) - 전체 프로세스 문서화
+- 📝 **노션 포트폴리오**: [전체 프로세스 문서화](https://pmjsm.notion.site/30600597106e81a5ac8fcd139bdd16b2) 
 - 💬 **피드백**: [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSdtndkAyHAOxu8W3596eG4YEr4GFajUZuvhyv2q_2FsJ-OBRg/viewform)
 
 <br>
